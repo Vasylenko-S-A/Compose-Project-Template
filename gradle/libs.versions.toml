@@ -1,9 +1,9 @@
 [versions]
 #ANDROIDX CORE
-androidx-core = "1.16.0"
+androidx-core = "1.17.0"
 androidx-core-splashscreen = "1.0.1"
 androidx-lifecycle-runtime-ktx = "2.9.4"
-androidx-activity-compose = "1.10.1"
+androidx-activity-compose = "1.11.0"
 
 #COMPOSE
 compose-bom = "2025.09.01"
