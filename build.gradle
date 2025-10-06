@@ -12,12 +12,7 @@ allprojects {
     ktlint {
         android = true
         ignoreFailures = false
-        disabledRules = [
-                "trailing-comma-on-call-site",
-                "trailing-comma-on-declaration-site",
-                "max-line-length",
-                "import-ordering"
-        ]
+
         reporters {
             reporter "plain"
             reporter "checkstyle"
