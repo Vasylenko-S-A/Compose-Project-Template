@@ -19,5 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "CPT"
-include ':app'
+include(":app")
+include(":commonAndroid")
