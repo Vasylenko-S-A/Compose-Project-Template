@@ -8,7 +8,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class TestNavigationViewModel : BaseViewModel<TestNavigationUiState>() {
-    override val uiState: MutableStateFlow<UiState<TestNavigationUiState>> = MutableStateFlow(UiState(TestNavigationUiState()))
+    override val uiState: MutableStateFlow<UiState<TestNavigationUiState>> =
+        MutableStateFlow(value = UiState(data = TestNavigationUiState()))
 
     init {
         testStateChanges()
@@ -16,15 +17,15 @@ class TestNavigationViewModel : BaseViewModel<TestNavigationUiState>() {
 
     fun testStateChanges() {
         viewModelScope.launch {
-            delay(1500)
+            delay(timeMillis = 1500)
             uiState.updateState {
-                it.copy("Wait...")
+                it.copy(title = "Wait...")
             }
-            delay(1500)
+            delay(timeMillis = 1500)
             uiState.loadingState()
-            delay(1500)
+            delay(timeMillis = 1500)
             uiState.successState {
-                it.copy("The navigation works perfectly.")
+                it.copy(title = "The navigation works perfectly.")
             }
         }
     }

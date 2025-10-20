@@ -2,6 +2,9 @@ package es.mobiledev.navigation
 
 import kotlinx.serialization.Serializable
 
+/**
+ * Sealed interface that represents the different screens of the application.
+ */
 @Serializable
 sealed interface AppScreens {
     //region TEST

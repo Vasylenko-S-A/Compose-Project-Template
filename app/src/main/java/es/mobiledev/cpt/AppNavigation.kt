@@ -9,6 +9,11 @@ import es.mobiledev.cpt.ui.screen.test.TestScreen
 import es.mobiledev.cpt.ui.screen.testNavigation.TestNavigationScreen
 import es.mobiledev.navigation.AppScreens
 
+/**
+ * Composable that defines the navigation graph of the application.
+ *
+ * @param navController The NavHostController that will be used to manage navigation.
+ */
 @Composable
 fun AppNavigation(navController: NavHostController = rememberNavController()) {
     NavHost(navController = navController, startDestination = AppScreens.Test) {
