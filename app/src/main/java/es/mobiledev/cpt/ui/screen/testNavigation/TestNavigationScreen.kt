@@ -1,6 +1,5 @@
-package es.mobiledev.cpt.ui.screen.test
+package es.mobiledev.cpt.ui.screen.testNavigation
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -14,9 +13,8 @@ import es.mobiledev.commonandroid.ui.base.BaseScreen
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun TestScreen(
-    viewModel: TestViewModel = viewModel(),
-    onTextClick: () -> Unit,
+fun TestNavigationScreen(
+    viewModel: TestNavigationViewModel = viewModel()
 ) {
     val uiState by viewModel.getUiState().collectAsStateWithLifecycle()
     BaseScreen(
@@ -29,10 +27,7 @@ fun TestScreen(
                     .padding(paddingValues),
             contentAlignment = Alignment.Center
         ) {
-            Text(
-                modifier = Modifier.clickable { onTextClick() },
-                text = uiState.data.title,
-            )
+            Text(uiState.data.title)
         }
     }
 }

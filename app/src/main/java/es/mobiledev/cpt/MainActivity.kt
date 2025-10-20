@@ -8,16 +8,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import es.mobiledev.cpt.ui.screen.test.TestScreen
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import es.mobiledev.cpt.ui.theme.CPTTheme
 
 class MainActivity : ComponentActivity() {
+    private var navController: NavHostController? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            CPTTheme {
-                TestScreen()
+            navController = rememberNavController()
+            navController?.let { safeNavController ->
+                CPTTheme {
+                    AppNavigation(
+                        navController = safeNavController
+                    )
+                }
             }
         }
     }

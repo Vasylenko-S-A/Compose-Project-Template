@@ -19,3 +19,4 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "CPT"
 include(":app")
 include(":commonAndroid")
+include(":navigation")
