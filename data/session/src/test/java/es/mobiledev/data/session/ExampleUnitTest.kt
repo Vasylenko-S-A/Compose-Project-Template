@@ -1,4 +1,4 @@
-package es.mobiledev.commonandroid
+package es.mobiledev.data.session
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
