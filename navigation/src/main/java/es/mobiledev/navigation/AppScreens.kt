@@ -14,4 +14,9 @@ sealed interface AppScreens {
     @Serializable
     data object TestNavigation : AppScreens
     //endregion
+
+    //region HOME
+    @Serializable
+    data object Home : AppScreens
+    //endregion
 }

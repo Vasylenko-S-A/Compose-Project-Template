@@ -20,3 +20,4 @@ rootProject.name = "CPT"
 include(":app")
 include(":commonAndroid")
 include(":navigation")
+include(":feature:home")

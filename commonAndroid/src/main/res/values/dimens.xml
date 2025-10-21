@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dp16">16dp</dimen>
+
+    <!-- region HOME SCREEN CONTENT -->
+    <dimen name="home_screen__content__vertical_arrangement">@dimen/dp16</dimen>
+    <!-- endregion -->
+</resources>
