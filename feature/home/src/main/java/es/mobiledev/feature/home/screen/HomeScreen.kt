@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import es.mobiledev.commonandroid.R
@@ -17,8 +18,8 @@ import es.mobiledev.feature.home.viewmodel.HomeViewModel
 @Composable
 fun HomeScreen(
     navigateToTestNavigation: () -> Unit,
-    viewModel: HomeViewModel = viewModel(),
 ) {
+    val viewModel: HomeViewModel = hiltViewModel()
     val uiState by viewModel.getUiState().collectAsStateWithLifecycle()
 
     BaseScreen(

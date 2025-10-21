@@ -6,8 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import es.mobiledev.cpt.ui.theme.CPTTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private var navController: NavHostController? = null
 
