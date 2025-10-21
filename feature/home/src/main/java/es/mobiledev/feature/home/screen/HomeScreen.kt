@@ -8,7 +8,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import es.mobiledev.commonandroid.R
 import es.mobiledev.commonandroid.ui.base.BaseScreen
 import es.mobiledev.feature.home.component.HomeScreenContent
