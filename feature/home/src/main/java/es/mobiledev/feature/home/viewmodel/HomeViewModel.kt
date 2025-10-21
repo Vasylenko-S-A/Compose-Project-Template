@@ -5,17 +5,21 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import es.mobiledev.commonandroid.R
 import es.mobiledev.commonandroid.ui.base.BaseViewModel
 import es.mobiledev.commonandroid.ui.base.UiState
+import es.mobiledev.domain.usecase.article.GetArticlesUseCase
 import es.mobiledev.feature.home.state.HomeUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel
     @Inject
-    constructor() : BaseViewModel<HomeUiState>() {
+    constructor(
+        private val getArticlesUseCase: GetArticlesUseCase,
+    ) : BaseViewModel<HomeUiState>() {
         override val uiState: MutableStateFlow<UiState<HomeUiState>> = MutableStateFlow(value = UiState(data = HomeUiState()))
 
         init {
@@ -24,6 +28,19 @@ class HomeViewModel
                 delay(2000L)
                 uiState.successState { currentUiState ->
                     currentUiState
+                }
+            }
+            getArticles()
+        }
+
+        fun getArticles() {
+            viewModelScope.launch(Dispatchers.Main) {
+                getArticlesUseCase(limit = 5L, offset = 0L).collectLatest { articles ->
+                    uiState.successState { currentUiState ->
+                        currentUiState.copy(
+                            articles = articles
+                        )
+                    }
                 }
             }
         }
