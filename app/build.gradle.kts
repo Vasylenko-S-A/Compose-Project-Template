@@ -54,6 +54,12 @@ dependencies {
     implementation(projects.navigation)
     implementation(projects.feature.home)
 
+    implementation(projects.data.local)
+    implementation(projects.data.repository)
+    implementation(projects.data.remote)
+    implementation(projects.data.source)
+    implementation(projects.data.session)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)

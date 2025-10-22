@@ -40,6 +40,7 @@ android {
 
 dependencies {
     implementation(projects.data.source)
+    implementation(projects.domain.model)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
