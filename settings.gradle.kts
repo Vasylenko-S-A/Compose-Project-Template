@@ -19,5 +19,8 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "CPT"
 include(":app")
 include(":commonAndroid")
+include(":domain:gateway")
+include(":domain:model")
+include(":domain:useCase")
 include(":navigation")
 include(":feature:home")

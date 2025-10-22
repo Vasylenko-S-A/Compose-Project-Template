@@ -1,0 +1,72 @@
+package es.mobiledev.domain.model.article
+
+data class ArticleBo(
+    val id: Long,
+    val title: String,
+    val authors: List<AuthorBo>,
+    val url: String,
+    val imageUrl: String,
+    val newsSite: String,
+    val summary: String,
+    val publishedAt: String,
+    val updatedAt: String,
+)
+
+val mockListArticles =
+    listOf(
+        ArticleBo(
+            id = 1,
+            title = "title 1",
+            authors = mockAuthors,
+            url = "url",
+            imageUrl = "imageUrl",
+            newsSite = "newsSite",
+            summary = "summary",
+            publishedAt = "publishedAt",
+            updatedAt = "updatedAt",
+        ),
+        ArticleBo(
+            id = 2,
+            title = "title 2",
+            authors = mockAuthors,
+            url = "url",
+            imageUrl = "imageUrl",
+            newsSite = "newsSite",
+            summary = "summary",
+            publishedAt = "publishedAt",
+            updatedAt = "updatedAt",
+        ),
+        ArticleBo(
+            id = 3,
+            title = "title 3",
+            authors = mockAuthors,
+            url = "url",
+            imageUrl = "imageUrl",
+            newsSite = "newsSite",
+            summary = "summary",
+            publishedAt = "publishedAt",
+            updatedAt = "updatedAt",
+        ),
+        ArticleBo(
+            id = 4,
+            title = "title 4",
+            authors = mockAuthors,
+            url = "url",
+            imageUrl = "imageUrl",
+            newsSite = "newsSite",
+            summary = "summary",
+            publishedAt = "publishedAt",
+            updatedAt = "updatedAt",
+        ),
+        ArticleBo(
+            id = 5,
+            title = "title 5",
+            authors = mockAuthors,
+            url = "url",
+            imageUrl = "imageUrl",
+            newsSite = "newsSite",
+            summary = "summary",
+            publishedAt = "publishedAt",
+            updatedAt = "updatedAt",
+        ),
+    )
