@@ -8,4 +8,10 @@ interface ArticleGateway {
         limit: Long,
         offset: Long,
     ): Flow<List<ArticleBo>>
+
+    suspend fun getFavoriteArticles(): Flow<List<ArticleBo>>
+
+    suspend fun saveFavoriteArticle(articleBo: ArticleBo)
+
+    suspend fun removeFavoriteArticle(articleBo: ArticleBo)
 }
