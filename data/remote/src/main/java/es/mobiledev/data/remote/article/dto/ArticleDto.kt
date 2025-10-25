@@ -46,7 +46,7 @@ val mockArticle1 =
                 )
             ),
         url = "https://example.com/article1",
-        imageUrl = "https://example.com/image1.jpg",
+        imageUrl = "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2025/10/training_in_the_luna_facilities/26942351-1-eng-GB/Training_in_the_LUNA_facilities_card_full.jpg",
         newsSite = "Cosmic Chronicles",
         summary = "A fascinating exploration of recent astronomical discoveries and the future of space travel.",
         publishedAt = "2024-05-20T10:00:00Z",
@@ -73,7 +73,7 @@ val mockArticle2 =
                 )
             ),
         url = "https://example.com/article2",
-        imageUrl = "https://example.com/image2.jpg",
+        imageUrl = "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/07/tianlong3-mockup-dongfeng-JSLC-july2025-SpacePioneer.jpg?fit=1024%2C573&ssl=1",
         newsSite = "Wellness Today",
         summary = "Practical tips and insights on how to live a more present and fulfilling life.",
         publishedAt = "2024-05-19T15:00:00Z",

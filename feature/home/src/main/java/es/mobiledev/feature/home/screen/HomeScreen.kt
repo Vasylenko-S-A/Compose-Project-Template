@@ -31,8 +31,16 @@ fun HomeScreen(
     ) { paddingValues ->
         HomeScreenContent(
             uiState = uiState.data,
-            onHomeButtonClick = { viewModel.onHomeButtonClick() },
-            onTestNavigationClick = { navigateToTestNavigation() },
+            onNavigateToDetail = { id ->
+                navigateToTestNavigation()
+            },
+            onFavoriteClick = { article, isFavorite ->
+                if (isFavorite) {
+                    viewModel.removeFavoriteArticle(article)
+                } else {
+                    viewModel.saveFavoriteArticle(article)
+                }
+            },
             modifier = Modifier.padding(paddingValues),
         )
     }

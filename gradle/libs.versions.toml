@@ -25,6 +25,9 @@ espresso-core = "3.7.0"
 #MOSHI
 moshi = "1.15.2"
 
+#COIL
+coil = "2.7.0"
+
 #PLUGINS
 agp = "8.13.0"
 kotlin = "2.2.20"
@@ -64,6 +67,9 @@ hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", v
 # MOSHI
 moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
 moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
+
+# COIL
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 
 # TESTING
 junit = { group = "junit", name = "junit", version.ref = "junit" }

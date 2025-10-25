@@ -18,7 +18,7 @@ class ArticleLocalDataSourceImpl(
 
     override suspend fun removeFavoriteArticle(article: ArticleBo) =
         // articleDao.removeFavoriteArticle(article.toDbo())
-        mockLocalDb.remove(article.toDbo())
+        mockLocalDb.removeIf { it.id == article.id }
 
     override suspend fun getFavoriteArticles(): List<ArticleBo> =
         // articleDao.getFavoriteArticles().map { it.toBo() }

@@ -39,6 +39,9 @@ android {
 }
 
 dependencies {
+    implementation(projects.domain.model)
+
+    implementation(libs.coil.compose)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
