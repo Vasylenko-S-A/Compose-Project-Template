@@ -7,5 +7,6 @@ data class HomeUiState(
     val message: Int = R.string.are_you_there,
     val buttonText: Int = R.string.im_here,
     val isSubmitting: Boolean = false,
-    val articles: List<ArticleBo> = emptyList()
+    val articles: List<ArticleBo> = emptyList(),
+    val favoriteArticles: List<ArticleBo> = emptyList()
 )

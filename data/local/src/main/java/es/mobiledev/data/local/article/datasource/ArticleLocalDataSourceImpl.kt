@@ -12,15 +12,13 @@ class ArticleLocalDataSourceImpl(
 ) : ArticleLocalDataSource {
     val mockLocalDb = mutableListOf<ArticleDbo>()
 
-    override suspend fun saveFavoriteArticle(article: ArticleBo) {
+    override suspend fun saveFavoriteArticle(article: ArticleBo) =
         // articleDao.saveFavoriteArticle(article.toDbo())
         mockLocalDb.add(article.toDbo())
-    }
 
-    override suspend fun removeFavoriteArticle(article: ArticleBo) {
+    override suspend fun removeFavoriteArticle(article: ArticleBo) =
         // articleDao.removeFavoriteArticle(article.toDbo())
         mockLocalDb.remove(article.toDbo())
-    }
 
     override suspend fun getFavoriteArticles(): List<ArticleBo> =
         // articleDao.getFavoriteArticles().map { it.toBo() }
