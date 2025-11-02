@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import es.mobiledev.commonandroid.util.EmptyComposable
 
 /**
  * CPT design component
@@ -41,8 +42,8 @@ import androidx.compose.ui.tooling.preview.Preview
 fun BaseScreen(
     modifier: Modifier = Modifier,
     isLoading: Boolean = false,
-    topBar: @Composable (() -> Unit) = {},
-    bottomBar: @Composable (() -> Unit) = {},
+    topBar: @Composable (() -> Unit) = EmptyComposable,
+    bottomBar: @Composable (() -> Unit) = EmptyComposable,
     content: @Composable ((PaddingValues) -> Unit) = {},
 ) {
     Scaffold(
@@ -74,9 +75,9 @@ private fun calculateWindowInsets(
     topBar: @Composable (() -> Unit),
     bottomBar: @Composable (() -> Unit)
 ) = when {
-    topBar == {} && bottomBar == {} -> WindowInsets()
-    topBar == {} -> WindowInsets.navigationBars
-    bottomBar == {} -> WindowInsets.statusBars
+    topBar == EmptyComposable && bottomBar == EmptyComposable -> WindowInsets()
+    topBar == EmptyComposable -> WindowInsets.navigationBars
+    bottomBar == EmptyComposable -> WindowInsets.statusBars
     else -> WindowInsets.systemBars
 }
 

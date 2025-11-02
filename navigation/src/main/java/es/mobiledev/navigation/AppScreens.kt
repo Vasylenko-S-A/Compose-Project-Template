@@ -9,10 +9,12 @@ import kotlinx.serialization.Serializable
 sealed interface AppScreens {
     //region TEST
     @Serializable
-    data object Test : AppScreens
-
-    @Serializable
     data object TestNavigation : AppScreens
+    //endregion
+
+    //region LAUNCHER
+    @Serializable
+    data object Launcher : AppScreens
     //endregion
 
     //region HOME
