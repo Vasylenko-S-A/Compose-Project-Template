@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import es.mobiledev.cpt.ui.screen.testNavigation.TestNavigationScreen
 import es.mobiledev.feature.home.screen.HomeScreen
+import es.mobiledev.feature.launcher.screen.LauncherScreen
 import es.mobiledev.navigation.AppScreens
 
 /**
@@ -16,7 +17,21 @@ import es.mobiledev.navigation.AppScreens
  */
 @Composable
 fun AppNavigation(navController: NavHostController = rememberNavController()) {
-    NavHost(navController = navController, startDestination = AppScreens.Home) {
+    NavHost(navController = navController, startDestination = AppScreens.Launcher) {
+        composable<AppScreens.Launcher> { navBackStackEntry ->
+            LauncherScreen(
+                onLauncherFinished = {
+                    navController.navigate(
+                        route = AppScreens.Home,
+                        builder = {
+                            popUpTo(navBackStackEntry.destination.id) {
+                                inclusive = true
+                            }
+                        }
+                    )
+                }
+            )
+        }
         composable<AppScreens.Home> {
             HomeScreen(
                 navigateToTestNavigation = {

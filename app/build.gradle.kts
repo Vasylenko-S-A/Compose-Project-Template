@@ -53,6 +53,7 @@ dependencies {
     implementation(projects.commonAndroid)
     implementation(projects.navigation)
     implementation(projects.feature.home)
+    implementation(projects.feature.launcher)
 
     implementation(projects.data.local)
     implementation(projects.data.repository)
