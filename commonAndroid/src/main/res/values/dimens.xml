@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="dp8">8dp</dimen>
     <dimen name="dp16">16dp</dimen>
+    <dimen name="dp24">24dp</dimen>
+    <dimen name="dp200">200dp</dimen>
+
+    <!-- region ARTICLE ITEM -->
+    <dimen name="article_item__content_padding">@dimen/dp8</dimen>
+    <dimen name="article_item__vertical_arrangement">@dimen/dp8</dimen>
+    <dimen name="article_item__image_height">@dimen/dp200</dimen>
+    <dimen name="article_item__icon_button_height">@dimen/dp24</dimen>
+    <!-- endregion -->
 
     <!-- region HOME SCREEN CONTENT -->
     <dimen name="home_screen__content__vertical_arrangement">@dimen/dp16</dimen>

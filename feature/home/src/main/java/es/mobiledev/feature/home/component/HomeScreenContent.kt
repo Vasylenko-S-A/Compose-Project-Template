@@ -1,68 +1,44 @@
 package es.mobiledev.feature.home.component
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import es.mobiledev.commonandroid.R
-import es.mobiledev.commonandroid.ui.component.button.CPTButton
+import androidx.compose.ui.unit.dp
+import es.mobiledev.commonandroid.ui.component.article.ArticleItem
+import es.mobiledev.domain.model.article.ArticleBo
 import es.mobiledev.feature.home.state.HomeUiState
 
 @Composable
 fun HomeScreenContent(
     uiState: HomeUiState,
-    onHomeButtonClick: () -> Unit,
-    onTestNavigationClick: () -> Unit,
+    onNavigateToDetail: (Long) -> Unit,
+    onFavoriteClick: (ArticleBo, Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    var hasClickedButton by remember { mutableStateOf(false) }
-
-    Column(
+    LazyColumn(
         modifier = modifier.fillMaxSize(),
-        verticalArrangement =
-            Arrangement.spacedBy(
-                space = dimensionResource(id = R.dimen.home_screen__content__vertical_arrangement),
-                alignment = Alignment.CenterVertically,
-            ),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        contentPadding = PaddingValues(16.dp)
     ) {
-        Text(
-            text = stringResource(id = uiState.message),
-            style = MaterialTheme.typography.displaySmall,
-        )
-        CPTButton(
-            onClick = {
-                hasClickedButton = true
-                onHomeButtonClick()
-            },
-            enabled = hasClickedButton.not(),
-            submitting = uiState.isSubmitting,
-        ) {
-            Text(
-                text = stringResource(id = uiState.buttonText),
-                style = MaterialTheme.typography.bodyLarge,
+        itemsIndexed(uiState.articles, key = { index, article -> article.id }) { index, article ->
+            val isFavorite = article.id in uiState.favoriteArticles.map { it.id }
+            ArticleItem(
+                article = article,
+                isFavorite = isFavorite,
+                onItemClick = {
+                    onNavigateToDetail(article.id)
+                },
+                onFavoriteClick = {
+                    onFavoriteClick(article, isFavorite)
+                }
             )
-        }
-        CPTButton(
-            onClick = {
-                onTestNavigationClick()
-            },
-        ) {
-            Text(
-                text = stringResource(id = R.string.test_navigation),
-                style = MaterialTheme.typography.bodyLarge,
-            )
+            if (index < uiState.articles.lastIndex) {
+                HorizontalDivider()
+            }
         }
     }
 }
@@ -73,7 +49,7 @@ private fun HomeScreenContentPreview() {
     // TODO: Add CPTTheme
     HomeScreenContent(
         uiState = HomeUiState(),
-        onHomeButtonClick = {},
-        onTestNavigationClick = {},
+        onNavigateToDetail = {},
+        onFavoriteClick = { _, _ -> }
     )
 }

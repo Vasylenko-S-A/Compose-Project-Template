@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import es.mobiledev.commonandroid.ui.base.BaseScreen
-import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun TestNavigationScreen() {
