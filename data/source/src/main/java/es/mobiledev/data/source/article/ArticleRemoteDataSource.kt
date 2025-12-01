@@ -1,5 +1,6 @@
 package es.mobiledev.data.source.article
 
+import es.mobiledev.domain.model.article.ArticleBo
 import es.mobiledev.domain.model.article.ArticleResponseBo
 
 interface ArticleRemoteDataSource {
@@ -7,4 +8,8 @@ interface ArticleRemoteDataSource {
         limit: Long,
         offset: Long
     ): ArticleResponseBo
+
+    suspend fun getArticleById(
+        id: Long
+    ): ArticleBo
 }

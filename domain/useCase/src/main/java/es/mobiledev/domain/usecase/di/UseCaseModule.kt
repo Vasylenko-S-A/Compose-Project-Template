@@ -6,6 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import es.mobiledev.domain.gateway.article.ArticleGateway
 import es.mobiledev.domain.gateway.preferences.PreferencesGateway
+import es.mobiledev.domain.usecase.article.GetArticleByIdUseCase
+import es.mobiledev.domain.usecase.article.GetArticleByIdUseCaseImpl
 import es.mobiledev.domain.usecase.article.GetArticlesUseCase
 import es.mobiledev.domain.usecase.article.GetArticlesUseCaseImpl
 import es.mobiledev.domain.usecase.article.GetFavoriteArticlesUseCase
@@ -30,6 +32,9 @@ object UseCaseModule {
 
     @Provides
     fun getArticlesUseCaseProvider(articleGateway: ArticleGateway) = GetArticlesUseCaseImpl(articleGateway) as GetArticlesUseCase
+
+    @Provides
+    fun getArticleByIdUseCaseProvider(articleGateway: ArticleGateway) = GetArticleByIdUseCaseImpl(articleGateway) as GetArticleByIdUseCase
 
     @Provides
     fun getFavoritesArticlesUseCaseProvider(articleGateway: ArticleGateway) = GetFavoriteArticlesUseCaseImpl(articleGateway) as GetFavoriteArticlesUseCase

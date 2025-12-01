@@ -10,6 +10,10 @@ interface ArticleGateway {
         offset: Long,
     ): Flow<ArticleResponseBo>
 
+    suspend fun getArticleById(
+        id: Long
+    ): Flow<ArticleBo>
+
     suspend fun getFavoriteArticles(): Flow<List<ArticleBo>>
 
     suspend fun saveFavoriteArticle(articleBo: ArticleBo)

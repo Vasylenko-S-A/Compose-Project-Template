@@ -17,6 +17,10 @@ class ArticleRepository(
         offset: Long
     ): Flow<ArticleResponseBo> = flowOf(remote.getArticles(limit = limit, offset = offset))
 
+    override suspend fun getArticleById(
+        id: Long
+    ): Flow<ArticleBo> = flowOf(remote.getArticleById(id = id))
+
     override suspend fun getFavoriteArticles(): Flow<List<ArticleBo>> = flowOf(local.getFavoriteArticles())
 
     override suspend fun saveFavoriteArticle(articleBo: ArticleBo) = local.saveFavoriteArticle(articleBo)
