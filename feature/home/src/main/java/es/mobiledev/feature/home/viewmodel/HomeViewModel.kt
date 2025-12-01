@@ -49,10 +49,10 @@ class HomeViewModel
         }
 
         private suspend fun getArticles() =
-            getArticlesUseCase(limit = 5L, offset = 0L).collectLatest { articles ->
+            getArticlesUseCase(limit = 5L, offset = 0L).collectLatest { response ->
                 uiState.successState { currentUiState ->
                     currentUiState.copy(
-                        articles = articles
+                        articles = response.results
                     )
                 }
             }
