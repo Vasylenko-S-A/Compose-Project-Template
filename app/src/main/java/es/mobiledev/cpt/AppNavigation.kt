@@ -18,6 +18,7 @@ import es.mobiledev.commonandroid.ui.base.ScreenWrapper
 import es.mobiledev.commonandroid.ui.component.navigationBar.CptNavigationBar
 import es.mobiledev.commonandroid.ui.component.topBar.CptTopBar
 import es.mobiledev.cpt.ui.screen.testNavigation.TestScreen
+import es.mobiledev.feature.articledetail.screen.ArticleDetailScreen
 import es.mobiledev.feature.home.screen.HomeScreen
 import es.mobiledev.feature.launcher.screen.LauncherScreen
 import es.mobiledev.navigation.AppScreens
@@ -82,14 +83,19 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
             composable<AppScreens.Home> { navBackStackEntry ->
                 currentScreen = navBackStackEntry.toRoute<AppScreens.Home>()
                 HomeScreen(
-                    navigateToTestNavigation = {
-                        navController.navigate(AppScreens.Test)
+                    navigateToArticleDetail = { id ->
+                        navController.navigate(AppScreens.ArticleDetail(id))
                     },
                 )
             }
             composable<AppScreens.Test> { navBackStackEntry ->
                 currentScreen = navBackStackEntry.toRoute<AppScreens.Test>()
                 TestScreen()
+            }
+
+            composable<AppScreens.ArticleDetail> {navBackStackEntry ->
+                currentScreen = navBackStackEntry.toRoute<AppScreens.ArticleDetail>()
+                ArticleDetailScreen()
             }
         }
     }

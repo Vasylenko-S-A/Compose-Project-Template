@@ -7,4 +7,6 @@
     <string name="welcome_home">Welcome Home! ❤️</string>
     <string name="heart_emoji">❤️</string>
     <string name="test">Test</string>
+    <string name="article_detail">Article Detail</string>
+    <string name="continue_reading">Continue reading</string>
 </resources>

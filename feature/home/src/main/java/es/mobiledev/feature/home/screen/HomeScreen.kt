@@ -13,7 +13,7 @@ import es.mobiledev.feature.home.viewmodel.HomeViewModel
 
 @Composable
 fun HomeScreen(
-    navigateToTestNavigation: () -> Unit,
+    navigateToArticleDetail: (Long) -> Unit,
 ) {
     val viewModel: HomeViewModel = hiltViewModel()
     val uiState by viewModel.getUiState().collectAsStateWithLifecycle()
@@ -24,7 +24,7 @@ fun HomeScreen(
         HomeScreenContent(
             uiState = uiState.data,
             onNavigateToDetail = { id ->
-                navigateToTestNavigation()
+                navigateToArticleDetail(id)
             },
             onFavoriteClick = { article, isFavorite ->
                 if (isFavorite) {
@@ -43,6 +43,6 @@ fun HomeScreen(
 fun HomeScreenPreview() {
     // TODO: Add CPTTheme
     HomeScreen(
-        navigateToTestNavigation = { },
+        navigateToArticleDetail = { },
     )
 }

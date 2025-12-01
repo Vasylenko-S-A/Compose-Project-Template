@@ -14,7 +14,6 @@ import es.mobiledev.domain.usecase.preferences.GetLastOpenTimeUseCase
 import es.mobiledev.domain.usecase.preferences.SaveLastOpenTimeUseCase
 import es.mobiledev.feature.home.state.HomeUiState
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -42,7 +41,6 @@ class HomeViewModel
 
         suspend fun fetchData() {
             uiState.loadingState()
-            delay(2000L)
             getFavoriteArticles()
             getArticles()
             saveLastOpenTime()

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="dp8">8dp</dimen>
+    <dimen name="dp12">12dp</dimen>
     <dimen name="dp16">16dp</dimen>
     <dimen name="dp24">24dp</dimen>
     <dimen name="dp52">52dp</dimen>
@@ -20,4 +21,19 @@
     <!-- region HOME SCREEN CONTENT -->
     <dimen name="home_screen__content__vertical_arrangement">@dimen/dp16</dimen>
     <!-- endregion -->
+
+    <!-- region ARTICLE DETAIL SCREEN -->
+    <dimen name="article_detail_screen__content__vertical_arrangement">@dimen/dp16</dimen>
+    <dimen name="article_detail_screen__content__padding">@dimen/dp12</dimen>
+
+    <dimen name="article_detail_image__corner_radius">@dimen/dp24</dimen>
+
+    <dimen name="article_detail_action_row__icon_button__size">@dimen/dp24</dimen>
+    <dimen name="article_detail_action_row__spacer_width">@dimen/dp8</dimen>
+
+    <dimen name="article_detail_body__vertical_arrangement">@dimen/dp8</dimen>
+
+    <dimen name="article_detail_bottom_bar__spacer_width">@dimen/dp8</dimen>
+    <!-- endregion -->
+
 </resources>
