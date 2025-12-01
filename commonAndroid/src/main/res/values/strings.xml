@@ -9,4 +9,6 @@
     <string name="test">Test</string>
     <string name="article_detail">Article Detail</string>
     <string name="continue_reading">Continue reading</string>
+    <string name="take_a_look_at_this_article">Take a look at this article: %s</string>
+    <string name="share_via">Share via</string>
 </resources>

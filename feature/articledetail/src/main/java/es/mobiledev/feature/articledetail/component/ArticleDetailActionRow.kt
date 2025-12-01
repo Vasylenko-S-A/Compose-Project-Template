@@ -11,10 +11,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import es.mobiledev.commonandroid.R
+import es.mobiledev.commonandroid.util.shareUrl
 import es.mobiledev.domain.model.article.ArticleBo
 
 @Composable
@@ -22,6 +24,8 @@ fun ArticleDetailActionRow(
     article: ArticleBo,
     onFavoriteClick: () -> Unit,
 ) {
+    val context = LocalContext.current
+
     Row(
         verticalAlignment = Alignment.Bottom
     ) {
@@ -33,7 +37,7 @@ fun ArticleDetailActionRow(
         )
         IconButton(
             onClick = {
-                // TODO Share content
+                context.shareUrl(url = article.url)
             },
             modifier = Modifier.size(size = dimensionResource(R.dimen.article_detail_action_row__icon_button__size)),
         ) {
