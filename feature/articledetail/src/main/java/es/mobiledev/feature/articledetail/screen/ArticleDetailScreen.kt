@@ -44,8 +44,12 @@ fun ArticleDetailScreen() {
         uiState.data.article?.let { safeArticle ->
             ArticleDetailScreenContent(
                 article = safeArticle,
+                isFavorite = uiState.data.isFavorite,
                 onFavoriteClick = {
-                    // viewModel.onFavoriteClick(article)
+                    viewModel.onFavoriteClick(
+                        article = safeArticle,
+                        isFavorite = uiState.data.isFavorite
+                    )
                 },
                 modifier = Modifier.padding(paddingValues),
             )

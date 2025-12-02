@@ -26,4 +26,6 @@ class ArticleRepository(
     override suspend fun saveFavoriteArticle(articleBo: ArticleBo) = local.saveFavoriteArticle(articleBo)
 
     override suspend fun removeFavoriteArticle(articleBo: ArticleBo) = local.removeFavoriteArticle(articleBo)
+
+    override suspend fun isArticleFavorite(id: Long) = flowOf(local.isArticleFavorite(id))
 }

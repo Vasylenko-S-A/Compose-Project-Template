@@ -22,9 +22,16 @@ import es.mobiledev.domain.model.article.ArticleBo
 @Composable
 fun ArticleDetailActionRow(
     article: ArticleBo,
+    isFavorite: Boolean,
     onFavoriteClick: () -> Unit,
 ) {
     val context = LocalContext.current
+    val iconResource =
+        if (isFavorite) {
+            R.drawable.ic_favorite
+        } else {
+            R.drawable.ic_not_favorite
+        }
 
     Row(
         verticalAlignment = Alignment.Bottom
@@ -56,7 +63,7 @@ fun ArticleDetailActionRow(
             modifier = Modifier.size(size = dimensionResource(R.dimen.article_detail_action_row__icon_button__size)),
         ) {
             Icon(
-                painter = painterResource(R.drawable.ic_not_favorite),
+                painter = painterResource(iconResource),
                 contentDescription = null
             )
         }

@@ -51,8 +51,9 @@ fun ArticleDetailBottomBar(
                     contentDescription = null,
                 )
                 Spacer(
-                    modifier = Modifier
-                        .width(dimensionResource(R.dimen.article_detail_bottom_bar__spacer_width))
+                    modifier =
+                        Modifier
+                            .width(dimensionResource(R.dimen.article_detail_bottom_bar__spacer_width))
                 )
                 Text(
                     text = stringResource(R.string.continue_reading),

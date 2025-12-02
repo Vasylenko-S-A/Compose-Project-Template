@@ -8,4 +8,6 @@ interface ArticleLocalDataSource {
     suspend fun removeFavoriteArticle(article: ArticleBo)
 
     suspend fun getFavoriteArticles(): List<ArticleBo>
+
+    suspend fun isArticleFavorite(id: Long): Boolean
 }

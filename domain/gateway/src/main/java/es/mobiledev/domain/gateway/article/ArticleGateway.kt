@@ -19,4 +19,6 @@ interface ArticleGateway {
     suspend fun saveFavoriteArticle(articleBo: ArticleBo)
 
     suspend fun removeFavoriteArticle(articleBo: ArticleBo)
+
+    suspend fun isArticleFavorite(id: Long): Flow<Boolean>
 }

@@ -15,6 +15,7 @@ import es.mobiledev.domain.model.article.mockListArticles
 @Composable
 fun ArticleDetailScreenContent(
     article: ArticleBo,
+    isFavorite: Boolean,
     onFavoriteClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -35,6 +36,7 @@ fun ArticleDetailScreenContent(
         item {
             ArticleDetailActionRow(
                 article = article,
+                isFavorite = isFavorite,
                 onFavoriteClick = onFavoriteClick
             )
         }
@@ -50,6 +52,7 @@ private fun ArticleDetailScreenContentPreview() {
     // TODO: Add CPTTheme
     ArticleDetailScreenContent(
         article = mockListArticles.first(),
+        isFavorite = true,
         onFavoriteClick = { }
     )
 }
