@@ -7,18 +7,34 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 sealed interface AppScreens {
-    //region TEST
-    @Serializable
-    data object TestNavigation : AppScreens
-    //endregion
+    val module: NavigationModule
+    val hasTopBar: Boolean
+    val hasBottomBar: Boolean
 
     //region LAUNCHER
     @Serializable
-    data object Launcher : AppScreens
+    data object Launcher : AppScreens {
+        override val module: NavigationModule = NavigationModule.LAUNCHER
+        override val hasTopBar: Boolean = false
+        override val hasBottomBar: Boolean = false
+    }
     //endregion
 
     //region HOME
     @Serializable
-    data object Home : AppScreens
+    data object Home : AppScreens {
+        override val module: NavigationModule = NavigationModule.HOME
+        override val hasTopBar: Boolean = true
+        override val hasBottomBar: Boolean = true
+    }
+    //endregion
+
+    //region TEST
+    @Serializable
+    data object Test : AppScreens {
+        override val module: NavigationModule = NavigationModule.TEST
+        override val hasTopBar: Boolean = true
+        override val hasBottomBar: Boolean = true
+    }
     //endregion
 }

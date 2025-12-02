@@ -77,7 +77,7 @@ fun ArticleItem(
                             if (isFavorite) {
                                 R.drawable.ic_favorite
                             } else {
-                                R.drawable.ic_not_favorite
+                                R.drawable.ic_cpt_favorites
                             }
                         ),
                     contentDescription = null,

@@ -2,13 +2,8 @@ package es.mobiledev.commonandroid.ui.base
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.systemBars
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -21,6 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import es.mobiledev.commonandroid.ui.component.navigationBar.CptNavigationBar
+import es.mobiledev.navigation.NavigationModule
 import es.mobiledev.commonandroid.util.EmptyComposable
 
 /**
@@ -49,7 +46,6 @@ fun BaseScreen(
     Scaffold(
         topBar = topBar,
         bottomBar = bottomBar,
-        contentWindowInsets = calculateWindowInsets(topBar, bottomBar),
         modifier = modifier.fillMaxSize()
     ) { paddingValues ->
         if (isLoading) {
@@ -70,17 +66,6 @@ fun BaseScreen(
     }
 }
 
-@Composable
-private fun calculateWindowInsets(
-    topBar: @Composable (() -> Unit),
-    bottomBar: @Composable (() -> Unit)
-) = when {
-    topBar == EmptyComposable && bottomBar == EmptyComposable -> WindowInsets()
-    topBar == EmptyComposable -> WindowInsets.navigationBars
-    bottomBar == EmptyComposable -> WindowInsets.statusBars
-    else -> WindowInsets.systemBars
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
@@ -97,9 +82,11 @@ private fun Preview() {
                 )
             },
             bottomBar = {
-                BottomAppBar(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                ) {}
+                CptNavigationBar(
+                    selectedModule = NavigationModule.HOME,
+                    modifier = Modifier,
+                    onClickModule = { /* no-op */ },
+                )
             },
         ) { paddingValues ->
             Box(

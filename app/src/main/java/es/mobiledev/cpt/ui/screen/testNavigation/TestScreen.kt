@@ -8,16 +8,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import es.mobiledev.commonandroid.R
 import es.mobiledev.commonandroid.ui.base.BaseScreen
+import es.mobiledev.feature.home.component.HomeScreenTopBar
 
 @Composable
-fun TestNavigationScreen() {
-    val viewModel: TestNavigationViewModel = hiltViewModel()
+fun TestScreen() {
+    val viewModel: TestViewModel = hiltViewModel()
     val uiState by viewModel.getUiState().collectAsStateWithLifecycle()
     BaseScreen(
         isLoading = uiState.isLoading,
+        topBar = {
+            HomeScreenTopBar(
+                title = stringResource(R.string.test),
+            )
+        },
     ) { paddingValues ->
         Box(
             modifier =
