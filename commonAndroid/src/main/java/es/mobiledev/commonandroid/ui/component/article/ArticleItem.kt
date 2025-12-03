@@ -75,9 +75,9 @@ fun ArticleItem(
                     painter =
                         painterResource(
                             if (isFavorite) {
-                                R.drawable.ic_favorite
+                                R.drawable.ic_cpt_favorites_filled
                             } else {
-                                R.drawable.ic_cpt_favorites
+                                R.drawable.ic_cpt_favorites_outlined
                             }
                         ),
                     contentDescription = null,

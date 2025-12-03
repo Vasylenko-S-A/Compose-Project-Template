@@ -35,6 +35,6 @@ fun RowScope.CptNavigationBarItem(
                 contentDescription = null,
             )
         },
-        modifier = Modifier.height(dimensionResource(R.dimen.dp52)),
+        modifier = Modifier.height(dimensionResource(R.dimen.navigation_bar__item_height)),
     )
 }

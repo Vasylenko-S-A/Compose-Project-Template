@@ -17,6 +17,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import es.mobiledev.commonandroid.ui.base.ScreenWrapper
+import es.mobiledev.commonandroid.ui.component.navigationBar.CptNavigationBar
+import es.mobiledev.commonandroid.ui.component.topBar.CptTopBar
+import es.mobiledev.commonandroid.util.EmptyComposable
 import es.mobiledev.cpt.ui.screen.testNavigation.TestScreen
 import es.mobiledev.feature.home.screen.HomeScreen
 import es.mobiledev.feature.launcher.screen.LauncherScreen
@@ -24,9 +27,13 @@ import es.mobiledev.navigation.AppScreens
 import es.mobiledev.navigation.NavigationModule
 
 /**
- * Composable that defines the navigation graph of the application.
+ * Application Navigation Graph
  *
- * @param navController The NavHostController that will be used to manage navigation.
+ * This composable defines the main navigation graph of the application, handling the routing between different screens.
+ * It also manages the visibility and state of the global UI elements like the TopBar and NavigationBar (BottomBar),
+ * integrating them with the [ScreenWrapper].
+ *
+ * @param navController the [NavHostController] used to manage the app's navigation. Defaults to [rememberNavController].
  */
 @Composable
 fun AppNavigation(navController: NavHostController = rememberNavController()) {
@@ -34,34 +41,49 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
     val currentSelectedModule by remember { derivedStateOf { currentScreen.module } }
     val showTopAppBar by remember { derivedStateOf { currentScreen.hasTopBar } }
     val showBottomBar by remember { derivedStateOf { currentScreen.hasBottomBar } }
+    val topBar: @Composable () -> Unit =
+        if (showTopAppBar) {
+            { CptTopBar() }
+        } else {
+            EmptyComposable
+        }
+
+    val bottomBar: @Composable () -> Unit =
+        if (showBottomBar) {
+            {
+                CptNavigationBar(
+                    selectedModule = currentSelectedModule,
+                    modifier = Modifier,
+                    onClickModule = { module ->
+                        when (module) {
+                            NavigationModule.LAUNCHER -> { /* no-op */ }
+
+                            NavigationModule.HOME -> {
+                                navController.navigate(AppScreens.Home) {
+                                    popUpTo<AppScreens.Home> {
+                                        inclusive = true
+                                    }
+                                }
+                            }
+
+                            NavigationModule.TEST -> {
+                                navController.navigate(AppScreens.Test) {
+                                    popUpTo<AppScreens.Test> {
+                                        inclusive = false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                )
+            }
+        } else {
+            EmptyComposable
+        }
 
     ScreenWrapper(
-        hasTopBar = showTopAppBar,
-        hasBottomBar = showBottomBar,
-        selectedModule = currentSelectedModule,
-        onClickModule = { module ->
-            when (module) {
-                NavigationModule.LAUNCHER -> {
-                    // no-op
-                }
-
-                NavigationModule.HOME -> {
-                    navController.navigate(AppScreens.Home) {
-                        popUpTo<AppScreens.Home> {
-                            inclusive = true
-                        }
-                    }
-                }
-
-                NavigationModule.TEST -> {
-                    navController.navigate(AppScreens.Test) {
-                        popUpTo<AppScreens.Test> {
-                            inclusive = false
-                        }
-                    }
-                }
-            }
-        },
+        topBar = topBar,
+        bottomBar = bottomBar,
     ) { paddingValues ->
         NavHost(
             navController = navController,

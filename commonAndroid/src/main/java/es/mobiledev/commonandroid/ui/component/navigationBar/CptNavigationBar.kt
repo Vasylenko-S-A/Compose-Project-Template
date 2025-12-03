@@ -45,7 +45,7 @@ private fun getCurrentModuleIcon(
     when (module) {
         NavigationModule.HOME -> R.drawable.ic_cpt_home
 
-        NavigationModule.TEST -> R.drawable.ic_cpt_favorites
+        NavigationModule.TEST -> R.drawable.ic_cpt_favorites_outlined
 
         else -> {
             R.drawable.ic_cpt_home

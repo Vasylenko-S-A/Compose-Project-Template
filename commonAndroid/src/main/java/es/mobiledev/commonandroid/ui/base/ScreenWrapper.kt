@@ -28,10 +28,8 @@ import es.mobiledev.navigation.NavigationModule
  *
  * This component provides a foundation to simplify the task of building your screen and managing its states.
  * @param modifier the [Modifier] to be applied to this component
- * @param hasTopBar a flag that indicates if the top bar should be shown
- * @param hasBottomBar a flag that indicates if the bottom bar should be shown
- * @param selectedModule the [NavigationModule] currently selected in the bottom bar (if shown)
- * @param onClickModule callback to be invoked when a navigation module is selected
+ * @param topBar a Composable function to provide the content for the top bar. Defaults to [EmptyComposable].
+ * @param bottomBar a Composable function to provide the content for the bottom bar. Defaults to [EmptyComposable].
  * @param content content of the screen. The lambda receives a [PaddingValues] that should be
  *   applied to the content root via [Modifier.padding] to properly offset top and bottom bars.
  *   If using [Modifier.verticalScroll], apply this modifier to the child of the scroll, and not
@@ -41,32 +39,10 @@ import es.mobiledev.navigation.NavigationModule
 @Composable
 fun ScreenWrapper(
     modifier: Modifier = Modifier,
-    hasTopBar: Boolean,
-    hasBottomBar: Boolean,
-    selectedModule: NavigationModule,
-    onClickModule: (NavigationModule) -> Unit = {},
+    topBar: @Composable () -> Unit = { EmptyComposable() },
+    bottomBar: @Composable () -> Unit = { EmptyComposable() },
     content: @Composable ((PaddingValues) -> Unit) = {},
 ) {
-    val topBar: @Composable () -> Unit =
-        if (hasTopBar) {
-            { CptTopBar() }
-        } else {
-            EmptyComposable
-        }
-
-    val bottomBar: @Composable () -> Unit =
-        if (hasBottomBar) {
-            {
-                CptNavigationBar(
-                    selectedModule = selectedModule,
-                    modifier = Modifier,
-                    onClickModule = onClickModule,
-                )
-            }
-        } else {
-            EmptyComposable
-        }
-
     Scaffold(
         topBar = topBar,
         bottomBar = bottomBar,
@@ -94,10 +70,14 @@ private fun calculateWindowInsets(
 private fun Preview() {
     MaterialTheme {
         ScreenWrapper(
-            hasTopBar = true,
-            hasBottomBar = true,
-            selectedModule = NavigationModule.HOME,
-            onClickModule = { },
+            topBar = { CptTopBar() },
+            bottomBar = {
+                CptNavigationBar(
+                    selectedModule = NavigationModule.HOME,
+                    modifier = Modifier,
+                    onClickModule = { },
+                )
+            },
         ) { paddingValues ->
             Box(
                 contentAlignment = Alignment.Center,
