@@ -39,9 +39,9 @@ import es.mobiledev.commonandroid.util.EmptyComposable
 fun BaseScreen(
     modifier: Modifier = Modifier,
     isLoading: Boolean = false,
-    topBar: @Composable (() -> Unit) = EmptyComposable,
-    bottomBar: @Composable (() -> Unit) = EmptyComposable,
-    content: @Composable ((PaddingValues) -> Unit) = {},
+    topBar: @Composable () -> Unit = EmptyComposable,
+    bottomBar: @Composable () -> Unit = EmptyComposable,
+    content: @Composable (PaddingValues) -> Unit = {},
 ) {
     Scaffold(
         topBar = topBar,

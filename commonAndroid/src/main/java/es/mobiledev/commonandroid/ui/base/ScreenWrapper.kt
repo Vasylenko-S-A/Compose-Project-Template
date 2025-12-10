@@ -39,29 +39,37 @@ import es.mobiledev.navigation.NavigationModule
 @Composable
 fun ScreenWrapper(
     modifier: Modifier = Modifier,
-    topBar: @Composable () -> Unit = { EmptyComposable() },
-    bottomBar: @Composable () -> Unit = { EmptyComposable() },
-    content: @Composable ((PaddingValues) -> Unit) = {},
+    topBar: @Composable () -> Unit = EmptyComposable,
+    bottomBar: @Composable () -> Unit = EmptyComposable,
+    showTopAppBar: Boolean = false,
+    showBottomBar: Boolean = false,
+    content: @Composable (PaddingValues) -> Unit = { EmptyComposable },
 ) {
     Scaffold(
-        topBar = topBar,
-        bottomBar = bottomBar,
-        contentWindowInsets = calculateWindowInsets(topBar, bottomBar),
+        topBar = {
+            if (showTopAppBar) {
+                topBar()
+            }
+        },
+        bottomBar = {
+            if (showBottomBar) {
+                bottomBar()
+            }
+        },
+        contentWindowInsets =
+            when {
+                showTopAppBar && showBottomBar -> WindowInsets.systemBars
+
+                showTopAppBar -> WindowInsets.statusBars
+
+                showBottomBar -> WindowInsets.navigationBars
+
+                else -> WindowInsets()
+            },
         modifier = modifier.fillMaxSize(),
     ) { paddingValues ->
         content(paddingValues)
     }
-}
-
-@Composable
-private fun calculateWindowInsets(
-    topBar: @Composable (() -> Unit),
-    bottomBar: @Composable (() -> Unit),
-) = when {
-    topBar == EmptyComposable && bottomBar == EmptyComposable -> WindowInsets()
-    topBar == EmptyComposable -> WindowInsets.navigationBars
-    bottomBar == EmptyComposable -> WindowInsets.statusBars
-    else -> WindowInsets.systemBars
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
