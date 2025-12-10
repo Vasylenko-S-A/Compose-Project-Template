@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name_abbr">CPT</string>
     <string name="home">Home</string>
     <string name="are_you_there">Are you there?</string>
     <string name="im_here">I´m here!</string>
     <string name="welcome_home">Welcome Home! ❤️</string>
     <string name="heart_emoji">❤️</string>
-    <string name="test_navigation">Test navigation</string>
+    <string name="test">Test</string>
 </resources>

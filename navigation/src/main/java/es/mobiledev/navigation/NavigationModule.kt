@@ -1,5 +1,7 @@
 package es.mobiledev.navigation
 
 enum class NavigationModule {
-    TEST
+    LAUNCHER,
+    HOME,
+    TEST,
 }

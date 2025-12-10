@@ -3,7 +3,12 @@
     <dimen name="dp8">8dp</dimen>
     <dimen name="dp16">16dp</dimen>
     <dimen name="dp24">24dp</dimen>
+    <dimen name="dp52">52dp</dimen>
     <dimen name="dp200">200dp</dimen>
+
+    <!-- region NAVIGATION BAR -->
+    <dimen name="navigation_bar__item_height">@dimen/dp52</dimen>
+    <!-- endregion -->
 
     <!-- region ARTICLE ITEM -->
     <dimen name="article_item__content_padding">@dimen/dp8</dimen>

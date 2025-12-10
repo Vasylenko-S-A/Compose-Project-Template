@@ -1,46 +1,96 @@
 package es.mobiledev.cpt
 
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import es.mobiledev.cpt.ui.screen.testNavigation.TestNavigationScreen
+import androidx.navigation.toRoute
+import es.mobiledev.commonandroid.ui.base.ScreenWrapper
+import es.mobiledev.commonandroid.ui.component.navigationBar.CptNavigationBar
+import es.mobiledev.commonandroid.ui.component.topBar.CptTopBar
+import es.mobiledev.cpt.ui.screen.testNavigation.TestScreen
 import es.mobiledev.feature.home.screen.HomeScreen
 import es.mobiledev.feature.launcher.screen.LauncherScreen
 import es.mobiledev.navigation.AppScreens
 
 /**
- * Composable that defines the navigation graph of the application.
+ * Application Navigation Graph
  *
- * @param navController The NavHostController that will be used to manage navigation.
+ * This composable defines the main navigation graph of the application, handling the routing between different screens.
+ * It also manages the visibility and state of the global UI elements like the TopBar and NavigationBar (BottomBar),
+ * integrating them with the [ScreenWrapper].
+ *
+ * @param navController the [NavHostController] used to manage the app's navigation. Defaults to [rememberNavController].
  */
 @Composable
 fun AppNavigation(navController: NavHostController = rememberNavController()) {
-    NavHost(navController = navController, startDestination = AppScreens.Launcher) {
-        composable<AppScreens.Launcher> { navBackStackEntry ->
-            LauncherScreen(
-                onLauncherFinished = {
-                    navController.navigate(
-                        route = AppScreens.Home,
-                        builder = {
-                            popUpTo(navBackStackEntry.destination.id) {
-                                inclusive = true
-                            }
+    var currentScreen: AppScreens by remember { mutableStateOf(AppScreens.Launcher) }
+    val currentSelectedModule by remember { derivedStateOf { currentScreen.module } }
+    val showTopAppBar by remember { derivedStateOf { currentScreen.hasTopBar } }
+    val showBottomBar by remember { derivedStateOf { currentScreen.hasBottomBar } }
+
+    ScreenWrapper(
+        topBar = { CptTopBar() },
+        bottomBar = {
+            CptNavigationBar(
+                selectedModule = currentSelectedModule,
+                modifier = Modifier,
+                onClickModule = { screen ->
+                    navController.navigate(screen) {
+                        popUpTo(screen) {
+                            inclusive = true
                         }
-                    )
-                }
-            )
-        }
-        composable<AppScreens.Home> {
-            HomeScreen(
-                navigateToTestNavigation = {
-                    navController.navigate(AppScreens.TestNavigation)
+                    }
                 },
             )
-        }
-        composable<AppScreens.TestNavigation> {
-            TestNavigationScreen()
+        },
+        showTopAppBar = showTopAppBar,
+        showBottomBar = showBottomBar,
+    ) { paddingValues ->
+        NavHost(
+            navController = navController,
+            startDestination = AppScreens.Launcher,
+            modifier =
+                Modifier
+                    .consumeWindowInsets(paddingValues)
+                    .padding(paddingValues)
+        ) {
+            composable<AppScreens.Launcher> { navBackStackEntry ->
+                currentScreen = navBackStackEntry.toRoute<AppScreens.Launcher>()
+                LauncherScreen(
+                    onLauncherFinished = {
+                        navController.navigate(
+                            route = AppScreens.Home,
+                            builder = {
+                                popUpTo(navBackStackEntry.destination.id) {
+                                    inclusive = true
+                                }
+                            },
+                        )
+                    },
+                )
+            }
+            composable<AppScreens.Home> { navBackStackEntry ->
+                currentScreen = navBackStackEntry.toRoute<AppScreens.Home>()
+                HomeScreen(
+                    navigateToTestNavigation = {
+                        navController.navigate(AppScreens.Test)
+                    },
+                )
+            }
+            composable<AppScreens.Test> { navBackStackEntry ->
+                currentScreen = navBackStackEntry.toRoute<AppScreens.Test>()
+                TestScreen()
+            }
         }
     }
 }

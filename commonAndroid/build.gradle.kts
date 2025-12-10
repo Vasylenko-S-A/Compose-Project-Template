@@ -42,6 +42,7 @@ dependencies {
     implementation(projects.domain.model)
 
     implementation(libs.coil.compose)
+    implementation(projects.navigation)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

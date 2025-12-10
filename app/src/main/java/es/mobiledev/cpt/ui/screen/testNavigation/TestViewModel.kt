@@ -10,11 +10,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TestNavigationViewModel
+class TestViewModel
     @Inject
-    constructor() : BaseViewModel<TestNavigationUiState>() {
-        override val uiState: MutableStateFlow<UiState<TestNavigationUiState>> =
-            MutableStateFlow(value = UiState(data = TestNavigationUiState()))
+    constructor() : BaseViewModel<TestUiState>() {
+        override val uiState: MutableStateFlow<UiState<TestUiState>> =
+            MutableStateFlow(value = UiState(data = TestUiState()))
 
         init {
             testStateChanges()
