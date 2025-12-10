@@ -66,19 +66,18 @@ class ArticleDetailViewModel
             isFavorite: Boolean
         ) {
             viewModelScope.launch(Dispatchers.IO) {
-                saveOrRemoveFavoriteArticleUseCase(
-                    article = article,
-                    isFavorite = isFavorite
-                ).collectLatest { isSuccess ->
-                    if (isSuccess) {
-                        uiState.successState { currentUiState ->
-                            currentUiState.copy(
-                                isFavorite = !isFavorite
-                            )
-                        }
-                    } else {
-                        Log.e("ArticleDetailViewModel", "Error")
+                try {
+                    saveOrRemoveFavoriteArticleUseCase(
+                        article = article,
+                        isFavorite = isFavorite
+                    )
+                    uiState.successState { currentUiState ->
+                        currentUiState.copy(
+                            isFavorite = !isFavorite
+                        )
                     }
+                } catch (e: Exception) {
+                    Log.e("ArticleDetailViewModel", "Error", e)
                 }
             }
         }

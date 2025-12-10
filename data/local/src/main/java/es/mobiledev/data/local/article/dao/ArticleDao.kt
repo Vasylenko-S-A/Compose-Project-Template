@@ -17,4 +17,7 @@ interface ArticleDao {
 
     @Query("SELECT * FROM articles")
     suspend fun getFavoriteArticles(): List<ArticleDbo>
+
+    @Query("SELECT * FROM articles WHERE id = :articleId")
+    suspend fun getFavoriteArticleById(articleId: Long): ArticleDbo?
 }

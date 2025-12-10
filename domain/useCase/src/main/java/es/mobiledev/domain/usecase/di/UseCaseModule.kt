@@ -14,10 +14,6 @@ import es.mobiledev.domain.usecase.article.GetFavoriteArticlesUseCase
 import es.mobiledev.domain.usecase.article.GetFavoriteArticlesUseCaseImpl
 import es.mobiledev.domain.usecase.article.IsArticleFavoriteUseCase
 import es.mobiledev.domain.usecase.article.IsArticleFavoriteUseCaseImpl
-import es.mobiledev.domain.usecase.article.RemoveFavoriteArticleUseCase
-import es.mobiledev.domain.usecase.article.RemoveFavoriteArticleUseCaseImpl
-import es.mobiledev.domain.usecase.article.SaveFavoriteArticleUseCase
-import es.mobiledev.domain.usecase.article.SaveFavoriteArticleUseCaseImpl
 import es.mobiledev.domain.usecase.article.SaveOrRemoveFavoriteArticleUseCase
 import es.mobiledev.domain.usecase.article.SaveOrRemoveFavoriteArticleUseCaseImpl
 import es.mobiledev.domain.usecase.preferences.GetLastOpenTimeUseCase
@@ -42,12 +38,6 @@ object UseCaseModule {
 
     @Provides
     fun getFavoritesArticlesUseCaseProvider(articleGateway: ArticleGateway) = GetFavoriteArticlesUseCaseImpl(articleGateway) as GetFavoriteArticlesUseCase
-
-    @Provides
-    fun saveFavoritesArticlesUseCaseProvider(articleGateway: ArticleGateway) = SaveFavoriteArticleUseCaseImpl(articleGateway) as SaveFavoriteArticleUseCase
-
-    @Provides
-    fun removeFavoritesArticlesUseCaseProvider(articleGateway: ArticleGateway) = RemoveFavoriteArticleUseCaseImpl(articleGateway) as RemoveFavoriteArticleUseCase
 
     @Provides
     fun isArticleFavoriteUseCaseProvider(articleGateway: ArticleGateway) = IsArticleFavoriteUseCaseImpl(articleGateway) as IsArticleFavoriteUseCase

@@ -6,11 +6,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -28,9 +30,9 @@ fun ArticleDetailActionRow(
     val context = LocalContext.current
     val iconResource =
         if (isFavorite) {
-            R.drawable.ic_favorite
+            R.drawable.ic_cpt_favorites_filled
         } else {
-            R.drawable.ic_not_favorite
+            R.drawable.ic_cpt_favorites_outlined
         }
 
     Row(
@@ -60,11 +62,21 @@ fun ArticleDetailActionRow(
         )
         IconButton(
             onClick = onFavoriteClick,
+            colors =
+                IconButtonDefaults.iconButtonColors(
+                    contentColor =
+                        if (isFavorite) {
+                            Color(0xFFF9A825)
+                        } else {
+                            Color.Gray
+                        }
+                ),
             modifier = Modifier.size(size = dimensionResource(R.dimen.article_detail_action_row__icon_button__size)),
         ) {
             Icon(
                 painter = painterResource(iconResource),
-                contentDescription = null
+                contentDescription = null,
+                modifier = Modifier.size(size = dimensionResource(R.dimen.article_detail_action_row__icon__size)),
             )
         }
     }

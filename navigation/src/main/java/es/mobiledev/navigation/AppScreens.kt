@@ -42,6 +42,10 @@ sealed interface AppScreens {
     @Serializable
     data class ArticleDetail(
         val id: Long
-    ) : AppScreens
+    ) : AppScreens {
+        override val module: NavigationModule = NavigationModule.ARTICLE_DETAIL
+        override val hasTopBar: Boolean = true
+        override val hasBottomBar: Boolean = true
+    }
     //endregion
 }

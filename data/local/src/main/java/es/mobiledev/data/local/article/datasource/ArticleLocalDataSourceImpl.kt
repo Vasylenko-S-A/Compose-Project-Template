@@ -7,7 +7,7 @@ import es.mobiledev.data.source.article.ArticleLocalDataSource
 import es.mobiledev.domain.model.article.ArticleBo
 
 class ArticleLocalDataSourceImpl(
-    private val roomDatabase: AppRoomDatabase,
+    roomDatabase: AppRoomDatabase,
 ) : ArticleLocalDataSource {
     private val articleDao = roomDatabase.articleDao()
 
@@ -17,7 +17,5 @@ class ArticleLocalDataSourceImpl(
 
     override suspend fun getFavoriteArticles(): List<ArticleBo> = articleDao.getFavoriteArticles().map { it.toBo() }
 
-    override suspend fun isArticleFavorite(id: Long) =
-        // articleDao.isArticleFavorite(article.toDbo())
-        mockLocalDb.any { it.id == id }
+    override suspend fun isArticleFavorite(id: Long) = articleDao.getFavoriteArticleById(articleId = id) != null
 }

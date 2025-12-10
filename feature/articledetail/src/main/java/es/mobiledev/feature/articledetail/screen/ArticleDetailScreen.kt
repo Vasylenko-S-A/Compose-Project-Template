@@ -1,17 +1,13 @@
 package es.mobiledev.feature.articledetail.screen
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import es.mobiledev.commonandroid.R
 import es.mobiledev.commonandroid.ui.base.BaseScreen
 import es.mobiledev.feature.articledetail.component.ArticleDetailBottomBar
 import es.mobiledev.feature.articledetail.component.ArticleDetailScreenContent
@@ -25,14 +21,6 @@ fun ArticleDetailScreen() {
 
     BaseScreen(
         isLoading = uiState.isLoading,
-        topBar = {
-            // TODO Provisional, remove when global topbar can be used
-            CenterAlignedTopAppBar(
-                title = {
-                    Text(text = stringResource(R.string.article_detail))
-                }
-            )
-        },
         bottomBar = {
             uiState.data.article?.url?.let { safeUrl ->
                 ArticleDetailBottomBar(

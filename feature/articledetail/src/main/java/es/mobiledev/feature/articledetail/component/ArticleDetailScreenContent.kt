@@ -1,8 +1,8 @@
 package es.mobiledev.feature.articledetail.component
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,12 +23,10 @@ fun ArticleDetailScreenContent(
         verticalArrangement =
             Arrangement
                 .spacedBy(space = dimensionResource(id = R.dimen.article_detail_screen__content__vertical_arrangement)),
+        contentPadding = PaddingValues(all = dimensionResource(id = R.dimen.article_detail_screen__content__padding)),
         modifier =
             modifier
-                .fillMaxSize()
-                .padding(
-                    all = dimensionResource(id = R.dimen.article_detail_screen__content__padding)
-                ),
+                .fillMaxSize(),
     ) {
         item {
             ArticleDetailImage(article)

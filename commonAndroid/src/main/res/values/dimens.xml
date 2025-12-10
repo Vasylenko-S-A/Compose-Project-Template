@@ -16,6 +16,7 @@
     <dimen name="article_item__vertical_arrangement">@dimen/dp8</dimen>
     <dimen name="article_item__image_height">@dimen/dp200</dimen>
     <dimen name="article_item__icon_button_height">@dimen/dp24</dimen>
+    <dimen name="article_item__icon_size">@dimen/dp16</dimen>
     <!-- endregion -->
 
     <!-- region HOME SCREEN CONTENT -->
@@ -29,6 +30,7 @@
     <dimen name="article_detail_image__corner_radius">@dimen/dp24</dimen>
 
     <dimen name="article_detail_action_row__icon_button__size">@dimen/dp24</dimen>
+    <dimen name="article_detail_action_row__icon__size">@dimen/dp16</dimen>
     <dimen name="article_detail_action_row__spacer_width">@dimen/dp8</dimen>
 
     <dimen name="article_detail_body__vertical_arrangement">@dimen/dp8</dimen>

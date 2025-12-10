@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import es.mobiledev.commonandroid.ui.base.BaseScreen
 import es.mobiledev.feature.home.component.HomeScreenContent
@@ -18,6 +19,13 @@ fun HomeScreen(
     val viewModel: HomeViewModel = hiltViewModel()
     val uiState by viewModel.getUiState().collectAsStateWithLifecycle()
 
+    LifecycleStartEffect(Unit) {
+        viewModel.getFavoriteArticles()
+        onStopOrDispose {
+            // NO - OP
+        }
+    }
+
     BaseScreen(
         isLoading = uiState.isLoading,
     ) { paddingValues ->
@@ -26,13 +34,7 @@ fun HomeScreen(
             onNavigateToDetail = { id ->
                 navigateToArticleDetail(id)
             },
-            onFavoriteClick = { article, isFavorite ->
-                if (isFavorite) {
-                    viewModel.removeFavoriteArticle(article)
-                } else {
-                    viewModel.saveFavoriteArticle(article)
-                }
-            },
+            onFavoriteClick = viewModel::onFavoriteClick,
             modifier = Modifier.padding(paddingValues),
         )
     }

@@ -2,13 +2,12 @@ package es.mobiledev.domain.usecase.article
 
 import es.mobiledev.domain.gateway.article.ArticleGateway
 import es.mobiledev.domain.model.article.ArticleBo
-import kotlinx.coroutines.flow.Flow
 
 interface SaveOrRemoveFavoriteArticleUseCase {
     suspend operator fun invoke(
         article: ArticleBo,
         isFavorite: Boolean
-    ): Flow<Boolean>
+    )
 }
 
 class SaveOrRemoveFavoriteArticleUseCaseImpl(
@@ -17,10 +16,9 @@ class SaveOrRemoveFavoriteArticleUseCaseImpl(
     override suspend fun invoke(
         article: ArticleBo,
         isFavorite: Boolean
-    ): Flow<Boolean> =
-        if (isFavorite) {
-            articleGateway.removeFavoriteArticle(article)
-        } else {
-            articleGateway.saveFavoriteArticle(article)
-        }
+    ) = if (isFavorite) {
+        articleGateway.removeFavoriteArticle(article)
+    } else {
+        articleGateway.saveFavoriteArticle(article)
+    }
 }
