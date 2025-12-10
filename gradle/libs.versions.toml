@@ -28,6 +28,9 @@ moshi = "1.15.2"
 #COIL
 coil = "2.7.0"
 
+#ROOM
+room = "2.8.4"
+
 #PLUGINS
 agp = "8.13.0"
 kotlin = "2.2.20"
@@ -70,6 +73,11 @@ moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-code
 
 # COIL
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+
+# ROOM
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
 # TESTING
 junit = { group = "junit", name = "junit", version.ref = "junit" }

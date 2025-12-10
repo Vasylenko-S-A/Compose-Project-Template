@@ -11,7 +11,7 @@ interface ArticleGateway {
 
     suspend fun getFavoriteArticles(): Flow<List<ArticleBo>>
 
-    suspend fun saveFavoriteArticle(articleBo: ArticleBo): Flow<Boolean>
+    suspend fun saveFavoriteArticle(articleBo: ArticleBo)
 
-    suspend fun removeFavoriteArticle(articleBo: ArticleBo): Flow<Boolean>
+    suspend fun removeFavoriteArticle(articleBo: ArticleBo)
 }

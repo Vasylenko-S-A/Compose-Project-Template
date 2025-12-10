@@ -1,8 +1,11 @@
 package es.mobiledev.data.local.article.dbo
 
-// TODO: Add Room annotations when be to implement
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "articles")
 data class ArticleDbo(
-    val id: Long,
+    @PrimaryKey val id: Long,
     val title: String,
     val imageUrl: String,
     val newsSite: String,

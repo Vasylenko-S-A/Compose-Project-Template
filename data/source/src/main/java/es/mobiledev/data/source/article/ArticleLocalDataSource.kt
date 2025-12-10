@@ -3,9 +3,9 @@ package es.mobiledev.data.source.article
 import es.mobiledev.domain.model.article.ArticleBo
 
 interface ArticleLocalDataSource {
-    suspend fun saveFavoriteArticle(article: ArticleBo): Boolean
+    suspend fun saveFavoriteArticle(article: ArticleBo)
 
-    suspend fun removeFavoriteArticle(article: ArticleBo): Boolean
+    suspend fun removeFavoriteArticle(article: ArticleBo)
 
     suspend fun getFavoriteArticles(): List<ArticleBo>
 }
