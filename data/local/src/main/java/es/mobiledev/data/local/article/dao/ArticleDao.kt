@@ -1,12 +1,20 @@
 package es.mobiledev.data.local.article.dao
 
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import es.mobiledev.data.local.article.dbo.ArticleDbo
 
-// TODO: Add Room annotations when be to implement
+@Dao
 interface ArticleDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveFavoriteArticle(article: ArticleDbo)
 
+    @Delete
     suspend fun removeFavoriteArticle(article: ArticleDbo)
 
+    @Query("SELECT * FROM articles")
     suspend fun getFavoriteArticles(): List<ArticleDbo>
 }

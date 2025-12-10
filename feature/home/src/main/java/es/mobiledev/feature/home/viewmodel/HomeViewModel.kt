@@ -73,29 +73,30 @@ class HomeViewModel
 
         private suspend fun getLastOpenTime() =
             getLastOpenTimeUseCase().collectLatest { lastOpenTime ->
+                // TODO: Pending to handle errors
                 Log.d("HomeViewModel", "Last open time: $lastOpenTime")
             }
 
         fun saveFavoriteArticle(article: ArticleBo) {
             viewModelScope.launch(Dispatchers.IO) {
-                saveFavoriteArticleUseCase(article = article).collectLatest { isSaved ->
-                    if (isSaved) {
-                        getFavoriteArticles()
-                    } else {
-                        Log.e("HomeViewModel", "Error saving favorite article")
-                    }
+                try {
+                    saveFavoriteArticleUseCase(article = article)
+                    getFavoriteArticles()
+                } catch (e: Exception) {
+                    // TODO: Pending to handle errors
+                    Log.e("HomeViewModel", "Error saving favorite article", e)
                 }
             }
         }
 
         fun removeFavoriteArticle(article: ArticleBo) {
             viewModelScope.launch(Dispatchers.IO) {
-                removeFavoriteArticleUseCase(article = article).collectLatest { isRemoved ->
-                    if (isRemoved) {
-                        getFavoriteArticles()
-                    } else {
-                        Log.e("HomeViewModel", "Error removing favorite article")
-                    }
+                try {
+                    removeFavoriteArticleUseCase(article = article)
+                    getFavoriteArticles()
+                } catch (e: Exception) {
+                    // TODO: Pending to handle errors
+                    Log.e("HomeViewModel", "Error removing favorite article", e)
                 }
             }
         }

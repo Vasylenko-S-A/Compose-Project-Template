@@ -1,9 +1,11 @@
 package es.mobiledev.data.local.di
 
+import android.app.Application
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import es.mobiledev.data.local.AppRoomDatabase
 import es.mobiledev.data.local.article.datasource.ArticleLocalDataSourceImpl
 import es.mobiledev.data.source.article.ArticleLocalDataSource
 import javax.inject.Singleton
@@ -13,5 +15,9 @@ import javax.inject.Singleton
 object LocalModule {
     @Provides
     @Singleton
-    fun articleLocalDataSourceProvider() = ArticleLocalDataSourceImpl() as ArticleLocalDataSource
+    fun appRoomDatabaseProvider(context: Application) = AppRoomDatabase.buildDatabase(context)
+
+    @Provides
+    @Singleton
+    fun articleLocalDataSourceProvider(roomDatabase: AppRoomDatabase) = ArticleLocalDataSourceImpl(roomDatabase) as ArticleLocalDataSource
 }
