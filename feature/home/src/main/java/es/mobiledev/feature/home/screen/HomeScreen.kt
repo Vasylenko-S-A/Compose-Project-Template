@@ -21,9 +21,7 @@ fun HomeScreen(
 
     LifecycleStartEffect(Unit) {
         viewModel.getFavoriteArticles()
-        onStopOrDispose {
-            // NO - OP
-        }
+        onStopOrDispose { /* no-op */ }
     }
 
     BaseScreen(
