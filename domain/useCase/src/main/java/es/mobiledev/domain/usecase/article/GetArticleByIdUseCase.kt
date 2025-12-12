@@ -2,17 +2,18 @@ package es.mobiledev.domain.usecase.article
 
 import es.mobiledev.domain.gateway.article.ArticleGateway
 import es.mobiledev.domain.model.article.ArticleBo
+import kotlinx.coroutines.flow.Flow
 
-interface RemoveFavoriteArticleUseCase {
+interface GetArticleByIdUseCase {
     suspend operator fun invoke(
-        article: ArticleBo
-    )
+        id: Long,
+    ): Flow<ArticleBo>
 }
 
-class RemoveFavoriteArticleUseCaseImpl(
+class GetArticleByIdUseCaseImpl(
     private val articleGateway: ArticleGateway,
-) : RemoveFavoriteArticleUseCase {
+) : GetArticleByIdUseCase {
     override suspend fun invoke(
-        article: ArticleBo
-    ) = articleGateway.removeFavoriteArticle(article)
+        id: Long,
+    ): Flow<ArticleBo> = articleGateway.getArticleById(id = id)
 }

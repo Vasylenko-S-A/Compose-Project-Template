@@ -81,6 +81,7 @@ fun ArticleItem(
                             }
                         ),
                     contentDescription = null,
+                    modifier = Modifier.size(dimensionResource(R.dimen.article_item__icon_size))
                 )
             }
         }

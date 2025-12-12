@@ -54,6 +54,7 @@ dependencies {
     implementation(projects.navigation)
     implementation(projects.feature.home)
     implementation(projects.feature.launcher)
+    implementation(projects.feature.articledetail)
 
     implementation(projects.data.local)
     implementation(projects.data.repository)

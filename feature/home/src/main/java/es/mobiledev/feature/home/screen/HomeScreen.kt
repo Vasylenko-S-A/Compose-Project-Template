@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import es.mobiledev.commonandroid.ui.base.BaseScreen
 import es.mobiledev.feature.home.component.HomeScreenContent
@@ -13,10 +14,15 @@ import es.mobiledev.feature.home.viewmodel.HomeViewModel
 
 @Composable
 fun HomeScreen(
-    navigateToTestNavigation: () -> Unit,
+    navigateToArticleDetail: (Long) -> Unit,
 ) {
     val viewModel: HomeViewModel = hiltViewModel()
     val uiState by viewModel.getUiState().collectAsStateWithLifecycle()
+
+    LifecycleStartEffect(Unit) {
+        viewModel.getFavoriteArticles()
+        onStopOrDispose { /* no-op */ }
+    }
 
     BaseScreen(
         isLoading = uiState.isLoading,
@@ -24,15 +30,9 @@ fun HomeScreen(
         HomeScreenContent(
             uiState = uiState.data,
             onNavigateToDetail = { id ->
-                navigateToTestNavigation()
+                navigateToArticleDetail(id)
             },
-            onFavoriteClick = { article, isFavorite ->
-                if (isFavorite) {
-                    viewModel.removeFavoriteArticle(article)
-                } else {
-                    viewModel.saveFavoriteArticle(article)
-                }
-            },
+            onFavoriteClick = viewModel::onFavoriteClick,
             modifier = Modifier.padding(paddingValues),
         )
     }
@@ -43,6 +43,6 @@ fun HomeScreen(
 fun HomeScreenPreview() {
     // TODO: Add CPTTheme
     HomeScreen(
-        navigateToTestNavigation = { },
+        navigateToArticleDetail = { },
     )
 }

@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,9 +19,11 @@ import es.mobiledev.commonandroid.ui.base.ScreenWrapper
 import es.mobiledev.commonandroid.ui.component.navigationBar.CptNavigationBar
 import es.mobiledev.commonandroid.ui.component.topBar.CptTopBar
 import es.mobiledev.cpt.ui.screen.testNavigation.TestScreen
+import es.mobiledev.feature.articledetail.screen.ArticleDetailScreen
 import es.mobiledev.feature.home.screen.HomeScreen
 import es.mobiledev.feature.launcher.screen.LauncherScreen
 import es.mobiledev.navigation.AppScreens
+import es.mobiledev.navigation.util.getCurrentSelectedModule
 
 /**
  * Application Navigation Graph
@@ -34,7 +37,7 @@ import es.mobiledev.navigation.AppScreens
 @Composable
 fun AppNavigation(navController: NavHostController = rememberNavController()) {
     var currentScreen: AppScreens by remember { mutableStateOf(AppScreens.Launcher) }
-    val currentSelectedModule by remember { derivedStateOf { currentScreen.module } }
+    val currentSelectedModule by currentScreen.getCurrentSelectedModule().collectAsStateWithLifecycle()
     val showTopAppBar by remember { derivedStateOf { currentScreen.hasTopBar } }
     val showBottomBar by remember { derivedStateOf { currentScreen.hasBottomBar } }
 
@@ -82,14 +85,19 @@ fun AppNavigation(navController: NavHostController = rememberNavController()) {
             composable<AppScreens.Home> { navBackStackEntry ->
                 currentScreen = navBackStackEntry.toRoute<AppScreens.Home>()
                 HomeScreen(
-                    navigateToTestNavigation = {
-                        navController.navigate(AppScreens.Test)
+                    navigateToArticleDetail = { id ->
+                        navController.navigate(AppScreens.ArticleDetail(id))
                     },
                 )
             }
             composable<AppScreens.Test> { navBackStackEntry ->
                 currentScreen = navBackStackEntry.toRoute<AppScreens.Test>()
                 TestScreen()
+            }
+
+            composable<AppScreens.ArticleDetail> { navBackStackEntry ->
+                currentScreen = navBackStackEntry.toRoute<AppScreens.ArticleDetail>()
+                ArticleDetailScreen()
             }
         }
     }
