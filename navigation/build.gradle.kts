@@ -1,3 +1,4 @@
+import es.mobiledev.buildsrc.AppConfig
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -8,12 +9,12 @@ plugins {
 
 android {
     namespace = "es.mobiledev.navigation"
-    compileSdk = 36
+    compileSdk = AppConfig.compileSdkVersion
 
     defaultConfig {
-        minSdk = 26
+        minSdk = AppConfig.minSdkVersion
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AppConfig.testRunner
     }
 
     buildTypes {

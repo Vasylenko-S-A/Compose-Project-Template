@@ -1,3 +1,4 @@
+import es.mobiledev.buildsrc.AppConfig
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -9,17 +10,17 @@ plugins {
 }
 
 android {
-    namespace = "es.mobiledev.cpt"
-    compileSdk = 36
+    namespace = AppConfig.namespace
+    compileSdk = AppConfig.compileSdkVersion
 
     defaultConfig {
-        applicationId = "es.mobiledev.cpt"
-        minSdk = 26
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = AppConfig.applicationId
+        minSdk = AppConfig.minSdkVersion
+        targetSdk = AppConfig.targetSdkVersion
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
+        testInstrumentationRunner = AppConfig.testRunner
+        resValue("string", "app_name", AppConfig.applicationName)
     }
 
     buildTypes {
