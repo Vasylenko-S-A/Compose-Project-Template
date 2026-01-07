@@ -1,3 +1,4 @@
+import es.mobiledev.buildsrc.AppConfig
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -10,12 +11,12 @@ plugins {
 
 android {
     namespace = "es.mobiledev.feature.articledetail"
-    compileSdk = 36
+    compileSdk = AppConfig.compileSdkVersion
 
     defaultConfig {
-        minSdk = 26
+        minSdk = AppConfig.minSdkVersion
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AppConfig.testRunner
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -36,6 +37,9 @@ android {
         compilerOptions {
             jvmTarget = JvmTarget.JVM_11
         }
+    }
+    buildFeatures {
+        compose = true
     }
 }
 
