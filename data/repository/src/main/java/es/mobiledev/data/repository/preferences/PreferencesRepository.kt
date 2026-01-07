@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flowOf
 class PreferencesRepository(
     private val preferences: PreferencesDataSource
 ) : PreferencesGateway {
-    override suspend fun saveLastOpenTime(time: Long): Flow<Boolean> = flowOf(preferences.saveLastOpenTime(time))
+    override suspend fun saveLastOpenTime(time: Long) = preferences.saveLastOpenTime(time)
 
     override suspend fun getLastOpenTime(): Flow<Long> = flowOf(preferences.getLastOpenTime())
 }

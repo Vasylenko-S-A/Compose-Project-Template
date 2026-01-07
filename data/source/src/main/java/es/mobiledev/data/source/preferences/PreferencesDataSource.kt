@@ -1,7 +1,7 @@
 package es.mobiledev.data.source.preferences
 
 interface PreferencesDataSource {
-    fun saveLastOpenTime(timeInMillis: Long): Boolean
+    suspend fun saveLastOpenTime(timeInMillis: Long)
 
-    fun getLastOpenTime(): Long
+    suspend fun getLastOpenTime(): Long
 }

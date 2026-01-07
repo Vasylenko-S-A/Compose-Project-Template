@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import es.mobiledev.commonandroid.ui.base.BaseViewModel
 import es.mobiledev.commonandroid.ui.base.UiState
+import es.mobiledev.commonandroid.util.getCurrentEpochMilli
 import es.mobiledev.domain.model.article.ArticleBo
 import es.mobiledev.domain.usecase.article.GetArticlesUseCase
 import es.mobiledev.domain.usecase.article.GetFavoriteArticlesUseCase
@@ -16,7 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.time.Instant
+import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
@@ -40,7 +41,7 @@ class HomeViewModel
         suspend fun fetchData() {
             uiState.loadingState()
             getArticles()
-            saveLastOpenTime()
+            getLastOpenTime()
         }
 
         private suspend fun getArticles() =
@@ -52,15 +53,12 @@ class HomeViewModel
                 }
             }
 
-        private suspend fun saveLastOpenTime() =
-            saveLastOpenTimeUseCase(Instant.now().toEpochMilli()).collectLatest {
-                getLastOpenTime()
-            }
+        private suspend fun saveLastOpenTime() = saveLastOpenTimeUseCase(timeInMillis = getCurrentEpochMilli())
 
         private suspend fun getLastOpenTime() =
             getLastOpenTimeUseCase().collectLatest { lastOpenTime ->
-                // TODO: Pending to handle errors
-                Log.d("HomeViewModel", "Last open time: $lastOpenTime")
+                Log.d("HomeViewModel", "Last open time: ${Date(lastOpenTime)}")
+                saveLastOpenTime()
             }
 
         fun getFavoriteArticles() =
