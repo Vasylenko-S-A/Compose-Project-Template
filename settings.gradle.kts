@@ -1,7 +1,5 @@
 @file:Suppress("UnstableApiUsage")
 
-include(":common")
-
 pluginManagement {
     repositories {
         google()
@@ -20,6 +18,7 @@ dependencyResolutionManagement {
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "CPT"
 include(":app")
+include(":common")
 include(":commonAndroid")
 include(":data:local")
 include(":data:remote")

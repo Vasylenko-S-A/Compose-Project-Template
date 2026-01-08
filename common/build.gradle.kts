@@ -1,18 +1,18 @@
+import es.mobiledev.buildsrc.AppConfig
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "es.mobiledev.common"
-    compileSdk {
-        version = release(36)
-    }
+    namespace = AppConfig.namespace
+    compileSdk = AppConfig.compileSdkVersion
 
     defaultConfig {
-        minSdk = 26
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        minSdk = AppConfig.minSdkVersion
+        testInstrumentationRunner = AppConfig.testRunner
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -29,8 +29,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_11
+        }
     }
 }
 
