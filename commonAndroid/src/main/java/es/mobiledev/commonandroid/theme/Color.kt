@@ -52,100 +52,119 @@ val BlueGrey1000Dark = Color(0xFFFFFFFF)
 
 // region Themed colors
 val BlueGrey0
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey0Light,
-        darkColor = BlueGrey0Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey0Light,
+            darkColor = BlueGrey0Dark,
+        )
 val BlueGrey50
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey50Light,
-        darkColor = BlueGrey50Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey50Light,
+            darkColor = BlueGrey50Dark,
+        )
 val BlueGrey100
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey100Light,
-        darkColor = BlueGrey100Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey100Light,
+            darkColor = BlueGrey100Dark,
+        )
 val BlueGrey200
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey200Light,
-        darkColor = BlueGrey200Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey200Light,
+            darkColor = BlueGrey200Dark,
+        )
 val BlueGrey300
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey300Light,
-        darkColor = BlueGrey300Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey300Light,
+            darkColor = BlueGrey300Dark,
+        )
 val BlueGrey400
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey400Light,
-        darkColor = BlueGrey400Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey400Light,
+            darkColor = BlueGrey400Dark,
+        )
 val BlueGrey500
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey500Light,
-        darkColor = BlueGrey500Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey500Light,
+            darkColor = BlueGrey500Dark,
+        )
 val BlueGrey600
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey600Light,
-        darkColor = BlueGrey600Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey600Light,
+            darkColor = BlueGrey600Dark,
+        )
 val BlueGrey700
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey700Light,
-        darkColor = BlueGrey700Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey700Light,
+            darkColor = BlueGrey700Dark,
+        )
 val BlueGrey800
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey800Light,
-        darkColor = BlueGrey800Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey800Light,
+            darkColor = BlueGrey800Dark,
+        )
 val BlueGrey900
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey900Light,
-        darkColor = BlueGrey900Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey900Light,
+            darkColor = BlueGrey900Dark,
+        )
 val BlueGrey910
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey910Light,
-        darkColor = BlueGrey910Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey910Light,
+            darkColor = BlueGrey910Dark,
+        )
 val BlueGrey920
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey920Light,
-        darkColor = BlueGrey920Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey920Light,
+            darkColor = BlueGrey920Dark,
+        )
 val BlueGrey930
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey930Light,
-        darkColor = BlueGrey930Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey930Light,
+            darkColor = BlueGrey930Dark,
+        )
 val BlueGrey940
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey940Light,
-        darkColor = BlueGrey940Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey940Light,
+            darkColor = BlueGrey940Dark,
+        )
 val BlueGrey950
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey950Light,
-        darkColor = BlueGrey950Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey950Light,
+            darkColor = BlueGrey950Dark,
+        )
 val BlueGrey960
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey960Light,
-        darkColor = BlueGrey960Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey960Light,
+            darkColor = BlueGrey960Dark,
+        )
 val BlueGrey970
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey970Light,
-        darkColor = BlueGrey970Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey970Light,
+            darkColor = BlueGrey970Dark,
+        )
 val BlueGrey1000
-    @Composable get() = getColorForTheme(
-        lightColor = BlueGrey1000Light,
-        darkColor = BlueGrey1000Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = BlueGrey1000Light,
+            darkColor = BlueGrey1000Dark,
+        )
 
 // endregion
 
@@ -156,19 +175,21 @@ val ArticleCardLight = Color(0xFFE5EDF1)
 
 // region Home
 val ArticleCard
-    @Composable get() = getColorForTheme(
-        lightColor = ArticleCardLight,
-        darkColor = BlueGrey100Dark,
-    )
+    @Composable get() =
+        getColorForTheme(
+            lightColor = ArticleCardLight,
+            darkColor = BlueGrey100Dark,
+        )
 
 // endregion
 
-
 @Composable
-private fun getColorForTheme(lightColor: Color, darkColor: Color): Color {
-    return if (isSystemInDarkTheme()) {
+private fun getColorForTheme(
+    lightColor: Color,
+    darkColor: Color
+): Color =
+    if (isSystemInDarkTheme()) {
         darkColor
     } else {
         lightColor
     }
-}
