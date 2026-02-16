@@ -54,7 +54,7 @@ private fun displayLargeRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_56),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -75,7 +75,7 @@ private fun displayMediumRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_45),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -96,7 +96,7 @@ private fun displaySmallRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_36),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -117,7 +117,7 @@ private fun headlineLargeRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_32),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -138,7 +138,7 @@ private fun headlineMediumRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_28),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -159,7 +159,7 @@ private fun headlineSmallRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_24),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -180,7 +180,7 @@ private fun titleLargeRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_22),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -201,7 +201,7 @@ private fun titleMediumRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_16),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -222,7 +222,7 @@ private fun titleSmallRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_14),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -243,7 +243,7 @@ private fun bodyLargeRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_16),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -264,7 +264,7 @@ private fun bodyMediumRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_14),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -285,7 +285,7 @@ private fun bodySmallRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_12),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -306,7 +306,7 @@ private fun labelLargeRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_14),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -327,7 +327,7 @@ private fun labelMediumRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_12),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -348,7 +348,7 @@ private fun labelSmallRoboto(
     fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_11),
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
-) = pipThemeTextRoboto(
+) = cptThemeTextRoboto(
     fontSize = fontSize,
     fontWeight = fontWeight,
     lineHeight = lineHeight,
@@ -363,7 +363,7 @@ private fun labelSmallRoboto(
 
 // region Base text style
 @Composable
-private fun pipThemeTextRoboto(
+private fun cptThemeTextRoboto(
     fontSize: TextUnit,
     fontWeight: FontWeight? = null,
     lineHeight: TextUnit = TextUnit.Unspecified,

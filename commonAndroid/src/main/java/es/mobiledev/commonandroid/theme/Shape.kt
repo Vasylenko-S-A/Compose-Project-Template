@@ -1,5 +1,9 @@
 package es.mobiledev.commonandroid.theme
 
-class Shape {
-// Shapes personalizados por componentes TODO()
-}
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.dimensionResource
+import es.mobiledev.commonandroid.R
+
+@Composable
+fun getArticleDetailShape() = RoundedCornerShape(size = dimensionResource(R.dimen.article_detail_image__corner_radius))
