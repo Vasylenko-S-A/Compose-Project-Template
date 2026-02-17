@@ -7,8 +7,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import es.mobiledev.commonandroid.R
+import es.mobiledev.commonandroid.theme.CptTheme
 import es.mobiledev.domain.model.article.ArticleBo
+import es.mobiledev.domain.model.article.mockListArticles
 
 @Composable
 fun ArticleDetailBody(article: ArticleBo) {
@@ -28,5 +31,13 @@ fun ArticleDetailBody(article: ArticleBo) {
             style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.Light,
         )
+    }
+}
+
+@Composable
+@PreviewLightDark
+private fun Preview() {
+    CptTheme {
+        ArticleDetailBody(article = mockListArticles.first())
     }
 }

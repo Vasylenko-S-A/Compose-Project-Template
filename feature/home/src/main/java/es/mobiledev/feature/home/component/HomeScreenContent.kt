@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import es.mobiledev.commonandroid.theme.CptTheme
 import es.mobiledev.commonandroid.ui.component.article.ArticleItem
 import es.mobiledev.domain.model.article.ArticleBo
 import es.mobiledev.feature.home.state.HomeUiState
@@ -46,10 +47,11 @@ fun HomeScreenContent(
 @Composable
 @PreviewLightDark
 private fun HomeScreenContentPreview() {
-    // TODO: Add CPTTheme
-    HomeScreenContent(
-        uiState = HomeUiState(),
-        onNavigateToDetail = {},
-        onFavoriteClick = { _, _ -> }
-    )
+    CptTheme {
+        HomeScreenContent(
+            uiState = HomeUiState(),
+            onNavigateToDetail = {},
+            onFavoriteClick = { _, _ -> }
+        )
+    }
 }

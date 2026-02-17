@@ -5,9 +5,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import coil.compose.AsyncImage
+import es.mobiledev.commonandroid.theme.CptTheme
 import es.mobiledev.commonandroid.theme.getArticleDetailShape
 import es.mobiledev.domain.model.article.ArticleBo
+import es.mobiledev.domain.model.article.mockListArticles
 
 @Composable
 fun ArticleDetailImage(article: ArticleBo) {
@@ -22,4 +25,12 @@ fun ArticleDetailImage(article: ArticleBo) {
                     shape = getArticleDetailShape()
                 ),
     )
+}
+
+@Composable
+@PreviewLightDark
+private fun Preview() {
+    CptTheme {
+        ArticleDetailImage(mockListArticles.first())
+    }
 }
