@@ -2,7 +2,7 @@ import es.mobiledev.buildsrc.AppConfig
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
@@ -10,86 +10,72 @@ plugins {
 }
 
 android {
-    namespace = AppConfig.namespace
+    namespace = "es.mobiledev.feature.webscreen"
     compileSdk = AppConfig.compileSdkVersion
 
     defaultConfig {
-        applicationId = AppConfig.applicationId
         minSdk = AppConfig.minSdkVersion
-        targetSdk = AppConfig.targetSdkVersion
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
+
         testInstrumentationRunner = AppConfig.testRunner
-        resValue("string", "app_name", AppConfig.applicationName)
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-
     kotlin {
         compilerOptions {
             jvmTarget = JvmTarget.JVM_11
         }
     }
-
     buildFeatures {
         compose = true
     }
 }
 
-tasks.named("preBuild").configure {
-    dependsOn("ktlintFormat")
-    dependsOn("ktlintCheck")
-}
-
 dependencies {
     implementation(projects.common)
     implementation(projects.commonAndroid)
+    implementation(projects.domain.model)
+    implementation(projects.domain.useCase)
     implementation(projects.navigation)
-    implementation(projects.feature.home)
-    implementation(projects.feature.launcher)
-    implementation(projects.feature.articledetail)
-    implementation(projects.feature.webscreen)
 
-    implementation(projects.data.local)
-    implementation(projects.data.repository)
-    implementation(projects.data.remote)
-    implementation(projects.data.source)
-    implementation(projects.data.session)
-
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
+
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.core.splashscreen)
 
     implementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation.runtime.ktx)
-    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.ui.tooling.preview)
+    debugImplementation(libs.androidx.ui.tooling)
+
     implementation(libs.androidx.material)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.material3)
+
+    implementation(libs.coil.compose)
+
+    implementation(libs.androidx.navigation.compose)
 
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation)
     ksp(libs.hilt.compiler)
 
-    implementation(libs.androidx.ui.tooling.preview)
-    debugImplementation(libs.androidx.ui.tooling)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    debugImplementation(libs.androidx.ui.test.manifest)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
 }
