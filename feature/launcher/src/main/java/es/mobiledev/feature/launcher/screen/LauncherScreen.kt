@@ -9,9 +9,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import es.mobiledev.commonandroid.theme.CptTheme
 import es.mobiledev.commonandroid.ui.base.BaseScreen
 import es.mobiledev.feature.launcher.R
 import es.mobiledev.feature.launcher.component.LauncherScreenContent
@@ -44,9 +45,9 @@ fun LauncherScreen(
 }
 
 @Composable
-@Preview
+@PreviewLightDark
 private fun Preview() {
-    LauncherScreen(
-        onLauncherFinished = {},
-    )
+    CptTheme {
+        LauncherScreen(onLauncherFinished = {})
+    }
 }

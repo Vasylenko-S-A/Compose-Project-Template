@@ -17,9 +17,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import es.mobiledev.commonandroid.R
+import es.mobiledev.commonandroid.theme.CptTheme
 import es.mobiledev.commonandroid.util.shareUrl
 import es.mobiledev.domain.model.article.ArticleBo
+import es.mobiledev.domain.model.article.mockListArticles
 
 @Composable
 fun ArticleDetailActionRow(
@@ -79,5 +82,13 @@ fun ArticleDetailActionRow(
                 modifier = Modifier.size(size = dimensionResource(R.dimen.article_detail_action_row__icon__size)),
             )
         }
+    }
+}
+
+@Composable
+@PreviewLightDark
+private fun Preview() {
+    CptTheme {
+        ArticleDetailActionRow(article = mockListArticles.first(), isFavorite = true, onFavoriteClick = {})
     }
 }

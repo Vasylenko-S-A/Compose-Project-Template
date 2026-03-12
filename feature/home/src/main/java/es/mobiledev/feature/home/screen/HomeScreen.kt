@@ -8,6 +8,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import es.mobiledev.commonandroid.theme.CptTheme
 import es.mobiledev.commonandroid.ui.base.BaseScreen
 import es.mobiledev.feature.home.component.HomeScreenContent
 import es.mobiledev.feature.home.viewmodel.HomeViewModel
@@ -41,8 +42,9 @@ fun HomeScreen(
 @Composable
 @PreviewLightDark
 fun HomeScreenPreview() {
-    // TODO: Add CPTTheme
-    HomeScreen(
-        navigateToArticleDetail = { },
-    )
+    CptTheme {
+        HomeScreen(
+            navigateToArticleDetail = { },
+        )
+    }
 }
