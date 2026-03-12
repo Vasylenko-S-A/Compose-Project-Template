@@ -8,7 +8,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import coil.compose.AsyncImage
 import es.mobiledev.commonandroid.theme.CptTheme
-import es.mobiledev.commonandroid.theme.getArticleDetailShape
+import es.mobiledev.commonandroid.theme.getArticleDetailImageShape
 import es.mobiledev.domain.model.article.ArticleBo
 import es.mobiledev.domain.model.article.mockListArticles
 
@@ -22,7 +22,7 @@ fun ArticleDetailImage(article: ArticleBo) {
             Modifier
                 .aspectRatio(ratio = 16F / 9F)
                 .clip(
-                    shape = getArticleDetailShape()
+                    shape = getArticleDetailImageShape()
                 ),
     )
 }
