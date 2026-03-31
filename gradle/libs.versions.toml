@@ -39,10 +39,10 @@ espresso-core = "3.7.0"
 datastore = "1.2.0"
 
 #PLUGINS
-agp = "8.13.0"
+agp = "9.1.0"
 kotlin = "2.2.20"
 ktlint = "13.1.0"
-ksp = "2.2.0-2.0.2"
+ksp = "2.3.2"
 
 [libraries]
 # ANDROIDX CORE
