@@ -15,8 +15,8 @@ compose-bom = "2025.10.00"
 navigation-compose = "2.9.5"
 
 #DI
-hilt = "2.56.2"
-hilt-navigation = "1.2.0"
+hilt = "2.59.2"
+hilt-navigation = "1.3.0"
 
 #MOSHI
 moshi = "1.15.2"
@@ -40,9 +40,9 @@ datastore = "1.2.0"
 
 #PLUGINS
 agp = "9.1.0"
-kotlin = "2.2.20"
+kotlin = "2.3.20"
 ktlint = "13.1.0"
-ksp = "2.3.2"
+ksp = "2.3.6"
 
 [libraries]
 # ANDROIDX CORE
@@ -106,7 +106,6 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }

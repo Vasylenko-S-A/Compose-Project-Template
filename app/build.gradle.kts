@@ -1,9 +1,7 @@
 import es.mobiledev.buildsrc.AppConfig
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
@@ -20,7 +18,7 @@ android {
         versionCode = AppConfig.versionCode
         versionName = AppConfig.versionName
         testInstrumentationRunner = AppConfig.testRunner
-        resValue("string", "app_name", AppConfig.applicationName)
+        manifestPlaceholders["appName"] = AppConfig.applicationName
     }
 
     buildTypes {
@@ -33,16 +31,8 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_11
-        }
-    }
-
     buildFeatures {
         compose = true
-        resValues = true
     }
 }
 
