@@ -1,6 +1,5 @@
 package es.mobiledev.feature.articledetail.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
@@ -52,8 +51,8 @@ class ArticleDetailViewModel
                         )
                     }
                 },
-                onError = {
-                    Log.e("ArticleDetailViewModel", it.message, it.throwable)
+                onError = { error ->
+                    logAppError(error)
                 }
             )
 
@@ -66,8 +65,8 @@ class ArticleDetailViewModel
                         )
                     }
                 },
-                onError = {
-                    Log.e("ArticleDetailViewModel", it.message, it.throwable)
+                onError = { error ->
+                    logAppError(error)
                 }
             )
 

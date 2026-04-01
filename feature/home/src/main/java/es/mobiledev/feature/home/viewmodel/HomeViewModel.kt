@@ -55,8 +55,8 @@ class HomeViewModel
                         )
                     }
                 },
-                onError = {
-                    Log.e("HomeViewModel", it.message, it.throwable)
+                onError = { error ->
+                    logAppError(error)
                 }
             )
 
@@ -79,11 +79,7 @@ class HomeViewModel
                         }
                     },
                     onError = { error ->
-                        Log.e(
-                            "HomeViewModel",
-                            error.message,
-                            error.throwable,
-                        )
+                        logAppError(error)
                     },
                 )
             }
