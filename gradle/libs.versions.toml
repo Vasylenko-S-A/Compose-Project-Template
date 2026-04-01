@@ -1,22 +1,22 @@
 [versions]
 #ANDROIDX CORE
-androidx-core = "1.17.0"
-androidx-core-splashscreen = "1.0.1"
-androidx-lifecycle = "2.9.4"
-androidx-activity-compose = "1.11.0"
+androidx-core = "1.18.0"
+androidx-core-splashscreen = "1.2.0"
+androidx-lifecycle = "2.10.0"
+androidx-activity-compose = "1.13.0"
 androidx-appcompat = "1.7.1"
 
 #KOTLIN
 logging-interceptor = "5.3.2"
-serialization-json = "1.7.2"
+serialization-json = "1.10.0"
 
 #COMPOSE
-compose-bom = "2025.10.00"
-navigation-compose = "2.9.5"
+compose-bom = "2026.03.01"
+navigation-compose = "2.9.7"
 
 #DI
-hilt = "2.56.2"
-hilt-navigation = "1.2.0"
+hilt = "2.59.2"
+hilt-navigation = "1.3.0"
 
 #MOSHI
 moshi = "1.15.2"
@@ -36,13 +36,13 @@ androidx-junit = "1.3.0"
 espresso-core = "3.7.0"
 
 #PREFERENCES
-datastore = "1.2.0"
+datastore = "1.2.1"
 
 #PLUGINS
-agp = "8.13.0"
-kotlin = "2.2.20"
-ktlint = "13.1.0"
-ksp = "2.2.0-2.0.2"
+agp = "9.1.0"
+kotlin = "2.3.20"
+ktlint = "14.2.0"
+ksp = "2.3.6"
 
 [libraries]
 # ANDROIDX CORE
@@ -106,7 +106,6 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
