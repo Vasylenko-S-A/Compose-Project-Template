@@ -1,5 +1,7 @@
 package es.mobiledev.commonandroid.ui.base
 
+import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,10 +17,18 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import es.mobiledev.commonandroid.theme.BlueGrey50
+import es.mobiledev.commonandroid.theme.BlueGrey700
+import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.ui.component.error.UiError
+import es.mobiledev.commonandroid.ui.component.error.UiErrorBottomSheet
+import es.mobiledev.commonandroid.ui.component.error.UiErrorDialog
+import es.mobiledev.commonandroid.ui.component.error.UiErrorScreen
 import es.mobiledev.commonandroid.ui.component.navigationBar.CptNavigationBar
-import es.mobiledev.navigation.NavigationModule
 import es.mobiledev.commonandroid.util.EmptyComposable
+import es.mobiledev.navigation.NavigationModule
 
 /**
  * CPT design component
@@ -38,7 +48,9 @@ import es.mobiledev.commonandroid.util.EmptyComposable
 @Composable
 fun BaseScreen(
     modifier: Modifier = Modifier,
+    backgroundColor: Color = BlueGrey50,
     isLoading: Boolean = false,
+    uiError: UiError = UiError.None,
     topBar: @Composable () -> Unit = EmptyComposable,
     bottomBar: @Composable () -> Unit = EmptyComposable,
     content: @Composable (PaddingValues) -> Unit = {},
@@ -46,22 +58,39 @@ fun BaseScreen(
     Scaffold(
         topBar = topBar,
         bottomBar = bottomBar,
-        modifier = modifier.fillMaxSize()
+        modifier =
+            modifier
+                .fillMaxSize()
+                .background(backgroundColor),
     ) { paddingValues ->
-        if (isLoading) {
-            Box(
-                modifier =
-                    Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues),
-                contentAlignment = Alignment.Center
-            ) {
-                CircularProgressIndicator(
-                    color = MaterialTheme.colorScheme.primary,
-                )
+        content(paddingValues)
+        Crossfade(targetState = isLoading || uiError !is UiError.None) { needManageState ->
+            if (needManageState) {
+                if (isLoading) {
+                    Box(
+                        modifier =
+                            Modifier
+                                .fillMaxSize()
+                                .padding(paddingValues)
+                                .background(backgroundColor),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        CircularProgressIndicator(
+                            color = BlueGrey700,
+                        )
+                    }
+                } else {
+                    when (uiError) {
+                        is UiError.Dialog -> UiErrorDialog(uiError, onDismiss = {})
+                        is UiError.Screen -> UiErrorScreen(uiError)
+                        is UiError.Sheet -> UiErrorBottomSheet(uiError, onDismiss = {})
+                        is UiError.Embedded -> TODO()
+                        is UiError.SnackBar -> TODO()
+                        is UiError.None -> { // no-op
+                        }
+                    }
+                }
             }
-        } else {
-            content(paddingValues)
         }
     }
 }
@@ -70,7 +99,7 @@ fun BaseScreen(
 @Composable
 @Preview
 private fun Preview() {
-    MaterialTheme {
+    CptTheme {
         BaseScreen(
             topBar = {
                 TopAppBar(
@@ -78,7 +107,7 @@ private fun Preview() {
                     colors =
                         TopAppBarDefaults.topAppBarColors(
                             containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        )
+                        ),
                 )
             },
             bottomBar = {
@@ -88,13 +117,19 @@ private fun Preview() {
                     onClickModule = { /* no-op */ },
                 )
             },
+            uiError =
+                UiError.Screen(
+                    title = "Oops, it looks like there was a problem",
+                    message = "An unexpected error occurred. Please try again later.",
+                    action = {},
+                ),
         ) { paddingValues ->
             Box(
                 contentAlignment = Alignment.Center,
                 modifier =
                     Modifier
                         .fillMaxSize()
-                        .padding(paddingValues)
+                        .padding(paddingValues),
             ) {
                 Text("Hello Android!")
             }
