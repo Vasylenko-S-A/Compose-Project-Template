@@ -3,23 +3,20 @@ package es.mobiledev.commonandroid.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.em
+import androidx.compose.ui.unit.sp
 import es.mobiledev.commonandroid.R
-import es.mobiledev.commonandroid.util.fontDimensionResource
 
 @Composable
 fun CPTTheme(
@@ -31,7 +28,11 @@ fun CPTTheme(
         when {
             dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
                 val context = LocalContext.current
-                if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+                if (darkTheme) {
+                    dynamicDarkColorScheme(context)
+                } else {
+                    dynamicLightColorScheme(context)
+                }
             }
 
             darkTheme -> darkColorScheme()
@@ -39,359 +40,121 @@ fun CPTTheme(
         }
     MaterialTheme(
         colorScheme = colorScheme,
+        typography = CPTTypography,
         content = content,
     )
 }
 
-// region Base text style by size
-@Composable
-private fun displayLargeRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_56),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun displayMediumRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_45),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun displaySmallRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_36),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun headlineLargeRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_32),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun headlineMediumRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_28),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun headlineSmallRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_24),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun titleLargeRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_22),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun titleMediumRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_16),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun titleSmallRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_14),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun bodyLargeRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_16),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun bodyMediumRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_14),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun bodySmallRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_12),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun labelLargeRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_14),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun labelMediumRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_12),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-@Composable
-private fun labelSmallRoboto(
-    fontWeight: FontWeight,
-    lineHeight: TextUnit = fontDimensionResource(R.dimen.line_height_font_sp_1_2),
-    color: Color,
-    textAlign: TextAlign = TextAlign.Start,
-    fontStyle: FontStyle = FontStyle.Normal,
-    fontSize: TextUnit = fontDimensionResource(R.dimen.font_sp_11),
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = cptThemeTextRoboto(
-    fontSize = fontSize,
-    fontWeight = fontWeight,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    fontStyle = fontStyle,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-// endregion
-
-// region Base text style
-@Composable
-private fun cptThemeTextRoboto(
-    fontSize: TextUnit,
-    fontWeight: FontWeight? = null,
-    lineHeight: TextUnit = TextUnit.Unspecified,
-    color: Color = Color.Unspecified,
-    textAlign: TextAlign = TextAlign.Start,
-    fontFamily: FontFamily = robotoFontFamily(),
-    fontStyle: FontStyle = FontStyle.Normal,
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration = TextDecoration.None,
-) = TextStyle(
-    fontSize = fontSize,
-    fontFamily = fontFamily,
-    fontWeight = fontWeight,
-    fontStyle = fontStyle,
-    lineHeight = lineHeight,
-    color = color,
-    textAlign = textAlign,
-    letterSpacing = letterSpacing,
-    textDecoration = textDecoration,
-)
-
-// endregion
-
-@Composable
-private fun robotoFontFamily() =
+private val RobotoFontFamily =
     FontFamily(
-        Font(R.font.roboto_regular, weight = FontWeight.W400),
-        Font(R.font.roboto_semibold, weight = FontWeight.W600),
-        Font(R.font.roboto_bold, weight = FontWeight.W700),
-        Font(R.font.roboto_extrabold, weight = FontWeight.W800),
+        Font(
+            resId = R.font.roboto_regular,
+            weight = FontWeight.Normal,
+        ),
+        Font(
+            resId = R.font.roboto_semibold,
+            weight = FontWeight.SemiBold,
+        ),
+        Font(
+            resId = R.font.roboto_bold,
+            weight = FontWeight.Bold,
+        ),
+        Font(
+            resId = R.font.roboto_extrabold,
+            weight = FontWeight.ExtraBold,
+        ),
+    )
+
+internal val CPTTypography =
+    Typography(
+        displayLarge =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 56.sp,
+                lineHeight = 1.2.em
+            ),
+        displayMedium =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 45.sp,
+                lineHeight = 1.2.em
+            ),
+        displaySmall =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 36.sp,
+                lineHeight = 1.2.em
+            ),
+        headlineLarge =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 32.sp,
+                lineHeight = 1.2.em
+            ),
+        headlineMedium =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 28.sp,
+                lineHeight = 1.2.em
+            ),
+        headlineSmall =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 24.sp,
+                lineHeight = 1.2.em
+            ),
+        titleLarge =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 22.sp,
+                lineHeight = 1.2.em
+            ),
+        titleMedium =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 16.sp,
+                lineHeight = 1.2.em
+            ),
+        titleSmall =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 14.sp,
+                lineHeight = 1.2.em
+            ),
+        bodyLarge =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 16.sp,
+                lineHeight = 1.2.em,
+            ),
+        bodyMedium =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 14.sp,
+                lineHeight = 1.2.em,
+            ),
+        bodySmall =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 12.sp,
+                lineHeight = 1.2.em,
+            ),
+        labelLarge =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 14.sp,
+                lineHeight = 1.2.em,
+            ),
+        labelMedium =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 12.sp,
+                lineHeight = 1.2.em,
+            ),
+        labelSmall =
+            TextStyle(
+                fontFamily = RobotoFontFamily,
+                fontSize = 11.sp,
+                lineHeight = 1.2.em,
+            )
     )
