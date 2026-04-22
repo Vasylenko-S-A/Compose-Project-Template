@@ -18,7 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import es.mobiledev.commonandroid.theme.BlueGrey50
 import es.mobiledev.commonandroid.theme.BlueGrey700
 import es.mobiledev.commonandroid.theme.CptTheme
@@ -26,6 +26,7 @@ import es.mobiledev.commonandroid.ui.component.error.UiError
 import es.mobiledev.commonandroid.ui.component.error.UiErrorBottomSheet
 import es.mobiledev.commonandroid.ui.component.error.UiErrorDialog
 import es.mobiledev.commonandroid.ui.component.error.UiErrorScreen
+import es.mobiledev.commonandroid.ui.component.error.UiErrorSnackbar
 import es.mobiledev.commonandroid.ui.component.navigationBar.CptNavigationBar
 import es.mobiledev.commonandroid.util.EmptyComposable
 import es.mobiledev.navigation.NavigationModule
@@ -58,6 +59,11 @@ fun BaseScreen(
     Scaffold(
         topBar = topBar,
         bottomBar = bottomBar,
+        snackbarHost = {
+            if (uiError is UiError.SnackBar) {
+                UiErrorSnackbar(uiError)
+            }
+        },
         modifier =
             modifier
                 .fillMaxSize()
@@ -85,8 +91,7 @@ fun BaseScreen(
                         is UiError.Screen -> UiErrorScreen(uiError)
                         is UiError.Sheet -> UiErrorBottomSheet(uiError, onDismiss = {})
                         is UiError.Embedded -> TODO()
-                        is UiError.SnackBar -> TODO()
-                        is UiError.None -> { // no-op
+                        else -> { // no-op
                         }
                     }
                 }
@@ -97,7 +102,7 @@ fun BaseScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Preview
+@PreviewLightDark
 private fun Preview() {
     CptTheme {
         BaseScreen(
@@ -118,7 +123,7 @@ private fun Preview() {
                 )
             },
             uiError =
-                UiError.Screen(
+                UiError.SnackBar(
                     title = "Oops, it looks like there was a problem",
                     message = "An unexpected error occurred. Please try again later.",
                     action = {},

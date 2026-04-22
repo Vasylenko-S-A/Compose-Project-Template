@@ -60,7 +60,7 @@ class HomeViewModel
                 onError = { error ->
                     uiState.errorState(
                         uiError =
-                            error.toUiError<UiError.Dialog> {
+                            error.toUiError<UiError.SnackBar> {
                                 viewModelScope.launch {
                                     fetchData()
                                 }
