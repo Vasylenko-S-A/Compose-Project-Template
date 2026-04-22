@@ -19,7 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import es.mobiledev.commonandroid.R
-import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 import es.mobiledev.commonandroid.util.shareUrl
 import es.mobiledev.domain.model.article.ArticleBo
 import es.mobiledev.domain.model.article.mockListArticles
@@ -88,7 +88,7 @@ fun ArticleDetailActionRow(
 @Composable
 @PreviewLightDark
 private fun Preview() {
-    CptTheme {
+    CPTTheme {
         ArticleDetailActionRow(article = mockListArticles.first(), isFavorite = true, onFavoriteClick = {})
     }
 }

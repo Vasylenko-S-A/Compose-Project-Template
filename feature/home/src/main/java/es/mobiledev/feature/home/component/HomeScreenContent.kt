@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 import es.mobiledev.commonandroid.ui.component.article.ArticleItem
 import es.mobiledev.domain.model.article.ArticleBo
 import es.mobiledev.feature.home.state.HomeUiState
@@ -47,7 +47,7 @@ fun HomeScreenContent(
 @Composable
 @PreviewLightDark
 private fun HomeScreenContentPreview() {
-    CptTheme {
+    CPTTheme {
         HomeScreenContent(
             uiState = HomeUiState(),
             onNavigateToDetail = {},

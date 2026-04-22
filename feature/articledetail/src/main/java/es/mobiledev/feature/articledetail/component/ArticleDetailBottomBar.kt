@@ -19,7 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import es.mobiledev.commonandroid.R
-import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 
 @Composable
 fun ArticleDetailBottomBar(
@@ -62,7 +62,7 @@ fun ArticleDetailBottomBar(
 @Composable
 @PreviewLightDark
 private fun Preview() {
-    CptTheme {
+    CPTTheme {
         ArticleDetailBottomBar(newsUrl = "https://www.google.com")
     }
 }

@@ -22,7 +22,7 @@ import es.mobiledev.commonandroid.R
 import es.mobiledev.commonandroid.util.fontDimensionResource
 
 @Composable
-fun CptTheme(
+fun CPTTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit,

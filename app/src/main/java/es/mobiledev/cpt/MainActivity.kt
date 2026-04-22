@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import es.mobiledev.cpt.ui.theme.CPTTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

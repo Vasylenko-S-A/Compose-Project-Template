@@ -7,7 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 import es.mobiledev.feature.launcher.R
 
 @Composable
@@ -30,7 +30,7 @@ fun LauncherScreenContent(modifier: Modifier = Modifier) {
 @Composable
 @PreviewLightDark
 private fun Preview() {
-    CptTheme {
+    CPTTheme {
         LauncherScreenContent()
     }
 }
