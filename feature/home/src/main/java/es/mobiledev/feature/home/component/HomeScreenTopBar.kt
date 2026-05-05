@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import es.mobiledev.commonandroid.R
-import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,7 +34,7 @@ fun HomeScreenTopBar(
 @Composable
 @PreviewLightDark
 private fun Preview() {
-    CptTheme {
+    CPTTheme {
         HomeScreenTopBar(title = stringResource(id = R.string.home))
     }
 }

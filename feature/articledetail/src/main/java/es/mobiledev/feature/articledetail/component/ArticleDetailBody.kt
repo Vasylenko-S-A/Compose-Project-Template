@@ -9,7 +9,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import es.mobiledev.commonandroid.R
-import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 import es.mobiledev.domain.model.article.ArticleBo
 import es.mobiledev.domain.model.article.mockListArticles
 
@@ -37,7 +37,7 @@ fun ArticleDetailBody(article: ArticleBo) {
 @Composable
 @PreviewLightDark
 private fun Preview() {
-    CptTheme {
+    CPTTheme {
         ArticleDetailBody(article = mockListArticles.first())
     }
 }

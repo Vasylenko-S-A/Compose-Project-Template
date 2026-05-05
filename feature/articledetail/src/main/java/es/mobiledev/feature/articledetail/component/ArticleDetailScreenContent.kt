@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import es.mobiledev.commonandroid.R
-import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 import es.mobiledev.domain.model.article.ArticleBo
 import es.mobiledev.domain.model.article.mockListArticles
 
@@ -48,7 +48,7 @@ fun ArticleDetailScreenContent(
 @Composable
 @PreviewLightDark
 private fun ArticleDetailScreenContentPreview() {
-    CptTheme {
+    CPTTheme {
         ArticleDetailScreenContent(
             article = mockListArticles.first(),
             isFavorite = true,

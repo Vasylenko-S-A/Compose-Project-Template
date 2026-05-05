@@ -38,6 +38,9 @@ espresso-core = "3.7.0"
 #PREFERENCES
 datastore = "1.2.1"
 
+#GOOGLE
+google-material = "1.13.0"
+
 #PLUGINS
 agp = "9.1.0"
 kotlin = "2.3.20"
@@ -95,6 +98,9 @@ logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-intercep
 
 # PREFERENCES
 androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+
+# GOOGLE
+google-material = { group = "com.google.android.material", name = "material", version.ref = "google-material" }
 
 # TESTING
 junit = { group = "junit", name = "junit", version.ref = "junit" }
