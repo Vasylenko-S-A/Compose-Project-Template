@@ -27,7 +27,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import es.mobiledev.common.DEFAULT_COMPONENT_WEIGHT
@@ -39,10 +38,10 @@ import es.mobiledev.commonandroid.theme.BlueGrey300
 import es.mobiledev.commonandroid.theme.BlueGrey50
 import es.mobiledev.commonandroid.theme.BlueGrey800
 import es.mobiledev.commonandroid.theme.BlueGrey930
-import es.mobiledev.commonandroid.theme.CptTheme
-import es.mobiledev.commonandroid.theme.bodySmallRoboto
-import es.mobiledev.commonandroid.theme.labelLargeRoboto
-import es.mobiledev.commonandroid.theme.titleMediumRoboto
+import es.mobiledev.commonandroid.theme.CPTTheme
+import es.mobiledev.commonandroid.theme.bodySmallRobotoSemiBold
+import es.mobiledev.commonandroid.theme.labelLargeRobotoSemiBold
+import es.mobiledev.commonandroid.theme.titleMediumRobotoBold
 
 @Composable
 fun CPTSnackbar(
@@ -149,17 +148,15 @@ private fun CPTSnackbarContent(
                 Text(
                     text = title,
                     style =
-                        titleMediumRoboto(
+                        titleMediumRobotoBold(
                             color = BlueGrey930,
-                            fontWeight = FontWeight.Bold,
                         ),
                 )
                 Text(
                     text = message,
                     style =
-                        bodySmallRoboto(
-                            color = BlueGrey800,
-                            fontWeight = FontWeight.SemiBold,
+                        bodySmallRobotoSemiBold(
+                            color = BlueGrey800
                         ),
                 )
             }
@@ -192,9 +189,8 @@ private fun CPTSnackbarAction(
             Text(
                 text = actionLabel ?: EMPTY_STRING,
                 style =
-                    labelLargeRoboto(
+                    labelLargeRobotoSemiBold(
                         color = BlueGrey930,
-                        fontWeight = FontWeight.SemiBold,
                     ),
             )
         }
@@ -203,7 +199,7 @@ private fun CPTSnackbarAction(
 @PreviewLightDark
 @Composable
 private fun Preview() {
-    CptTheme {
+    CPTTheme {
         Column(
             modifier =
                 Modifier

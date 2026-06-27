@@ -8,7 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import es.mobiledev.commonandroid.theme.BlueGrey50
-import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 import es.mobiledev.commonandroid.ui.base.BaseScreen
 
 @Composable
@@ -29,7 +29,7 @@ fun UiErrorScreen(
 @Preview
 @Composable
 private fun Preview() {
-    CptTheme {
+    CPTTheme {
         BaseScreen {
             UiErrorScreen(
                 uiError =

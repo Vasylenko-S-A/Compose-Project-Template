@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import es.mobiledev.commonandroid.theme.BlueGrey400
 import es.mobiledev.commonandroid.theme.BlueGrey50
-import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 import es.mobiledev.commonandroid.ui.base.BaseScreen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -63,7 +63,7 @@ fun UiErrorBottomSheet(
 @PreviewLightDark
 @Composable
 private fun Preview() {
-    CptTheme {
+    CPTTheme {
         BaseScreen {
             UiErrorBottomSheet(
                 uiError =

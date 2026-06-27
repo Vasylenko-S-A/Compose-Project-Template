@@ -19,7 +19,7 @@ import androidx.compose.ui.window.DialogProperties
 import es.mobiledev.commonandroid.R
 import es.mobiledev.commonandroid.theme.BlueGrey50
 import es.mobiledev.commonandroid.theme.BlueGrey800
-import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 import es.mobiledev.commonandroid.ui.base.BaseScreen
 
 @Composable
@@ -78,7 +78,7 @@ fun UiErrorDialog(
 @Preview
 @Composable
 private fun Preview() {
-    CptTheme {
+    CPTTheme {
         BaseScreen {
             UiErrorDialog(
                 uiError =

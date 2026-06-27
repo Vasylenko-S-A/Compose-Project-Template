@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import es.mobiledev.commonandroid.R
@@ -19,8 +18,8 @@ import es.mobiledev.commonandroid.theme.BlueGrey0
 import es.mobiledev.commonandroid.theme.BlueGrey800
 import es.mobiledev.commonandroid.theme.BlueGrey930
 import es.mobiledev.commonandroid.theme.Red0
-import es.mobiledev.commonandroid.theme.titleLargeRoboto
-import es.mobiledev.commonandroid.theme.titleSmallRoboto
+import es.mobiledev.commonandroid.theme.titleLargeRobotoSemiBold
+import es.mobiledev.commonandroid.theme.titleSmallRobotoRegular
 
 @Composable
 fun UiErrorContent(
@@ -50,8 +49,7 @@ fun UiErrorContent(
                 Text(
                     text = uiError.title,
                     style =
-                        titleLargeRoboto(
-                            fontWeight = FontWeight.W600,
+                        titleLargeRobotoSemiBold(
                             color = BlueGrey930,
                             textAlign = TextAlign.Center,
                         ),
@@ -59,8 +57,7 @@ fun UiErrorContent(
                 Text(
                     text = uiError.message,
                     style =
-                        titleSmallRoboto(
-                            fontWeight = FontWeight.W400,
+                        titleSmallRobotoRegular(
                             color = BlueGrey800,
                             textAlign = TextAlign.Center,
                         ),

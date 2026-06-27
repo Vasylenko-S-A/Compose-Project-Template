@@ -1,7 +1,6 @@
 package es.mobiledev.commonandroid.ui.base
 
 import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,7 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import es.mobiledev.commonandroid.theme.BlueGrey50
 import es.mobiledev.commonandroid.theme.BlueGrey700
-import es.mobiledev.commonandroid.theme.CptTheme
+import es.mobiledev.commonandroid.theme.CPTTheme
 import es.mobiledev.commonandroid.ui.component.error.UiError
 import es.mobiledev.commonandroid.ui.component.error.UiErrorBottomSheet
 import es.mobiledev.commonandroid.ui.component.error.UiErrorDialog
@@ -59,6 +58,7 @@ fun BaseScreen(
     Scaffold(
         topBar = topBar,
         bottomBar = bottomBar,
+        containerColor = backgroundColor,
         snackbarHost = {
             if (uiError is UiError.SnackBar) {
                 UiErrorSnackbar(uiError)
@@ -66,19 +66,17 @@ fun BaseScreen(
         },
         modifier =
             modifier
-                .fillMaxSize()
-                .background(backgroundColor),
+                .fillMaxSize(),
     ) { paddingValues ->
         content(paddingValues)
-        Crossfade(targetState = isLoading || uiError !is UiError.None) { needManageState ->
+        Crossfade(targetState = isLoading || (uiError !is UiError.None && uiError !is UiError.SnackBar)) { needManageState ->
             if (needManageState) {
                 if (isLoading) {
                     Box(
                         modifier =
                             Modifier
                                 .fillMaxSize()
-                                .padding(paddingValues)
-                                .background(backgroundColor),
+                                .padding(paddingValues),
                         contentAlignment = Alignment.Center,
                     ) {
                         CircularProgressIndicator(
@@ -104,7 +102,7 @@ fun BaseScreen(
 @Composable
 @PreviewLightDark
 private fun Preview() {
-    CptTheme {
+    CPTTheme {
         BaseScreen(
             topBar = {
                 TopAppBar(
